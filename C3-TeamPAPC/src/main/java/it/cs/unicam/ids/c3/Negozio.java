@@ -2,14 +2,16 @@ package it.cs.unicam.ids.c3;
 
 import java.util.List;
 
-public class Negozio implements NegzioInterface {
+public class Negozio implements NegozioInterface {
 
     private String nome;
     private String indirizzo;
+    private String orario;
     private long recapito;
-    private Commerciante proprietario;
-    private List<Prodotto> prodotti;
+    private CommercianteInterface proprietario;
+    private List<ProdottoInterface> prodotti;
 
+    @Override
     public String getNome() {
         return this.nome;
     }
@@ -18,10 +20,22 @@ public class Negozio implements NegzioInterface {
         this.nome = nome;
     }
 
+    @Override
     public String getIndirizzo() {
         return this.indirizzo;
     }
 
+    @Override
+    public String getOrario() {
+        return this.orario;
+    }
+
+    @Override
+    public void setOrario(String orario) {
+        this.orario = orario;
+    }
+
+    @Override
     public void setIndirizzo(String indirizzo) {
         this.indirizzo = indirizzo;
     }
@@ -34,19 +48,22 @@ public class Negozio implements NegzioInterface {
         this.recapito = recapito;
     }
 
-    public Commerciante getProprietario() {
+    @Override
+    public CommercianteInterface getProprietario() {
         return this.proprietario;
     }
 
-    public void setProprietario(Commerciante proprietario) {
+    @Override
+    public void setProprietario(CommercianteInterface proprietario) {
         this.proprietario = proprietario;
     }
 
-    public List<Prodotto> getProdotti() {
+    @Override
+    public List<ProdottoInterface> getProdotti() {
         return this.prodotti;
     }
 
-    public void setProdotti(List<Prodotto> prodotti) {
+    public void setProdotti(List<ProdottoInterface> prodotti) {
         this.prodotti = prodotti;
     }
 

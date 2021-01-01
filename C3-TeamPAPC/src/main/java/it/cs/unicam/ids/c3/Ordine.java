@@ -1,33 +1,61 @@
 package it.cs.unicam.ids.c3;
 
 
-public class Ordine {
-    private long numero;
-    private String destinazione;
-    private String emittente;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
-    public long getNumero() {
-        return this.numero;
+public class Ordine implements OrdineInterface{
+    private final long id;
+    private final long numeroRitiro;
+    private PuntoRitiro destinazione;
+    private NegozioInterface emittente;
+    private List<ProdottoInterface> prodotti;
+
+    public Ordine(){
+        this.id = new Random().nextInt(999999);
+        this.numeroRitiro = new Random().nextInt(9999);
+        this.prodotti = new ArrayList<>();
     }
 
-    public void setNumero(long numero) {
-        this.numero = numero;
-    }
-
-    public String getDestinazione() {
-        return this.destinazione;
-    }
-
-    public void setDestinazione(String destinazione) {
+    public Ordine(PuntoRitiro destinazione, NegozioInterface emittente) {
+        this();
         this.destinazione = destinazione;
+        this.emittente = emittente;
     }
 
-    public String getEmittente() {
+    @Override
+    public List<ProdottoInterface> getProdotti() {
+        return this.prodotti;
+    }
+
+    @Override
+    public long getNumero() {
+        return this.numeroRitiro;
+    }
+
+    @Override
+    public NegozioInterface getEmittente() {
         return this.emittente;
     }
 
-    public void setEmittente(String emittente) {
+    @Override
+    public PuntoRitiro getPuntoRitiro() {
+        return this.destinazione;
+    }
+
+    @Override
+    public long getId() {
+        return this.id;
+    }
+
+    @Override
+    public void setEmittente(NegozioInterface emittente) {
         this.emittente = emittente;
     }
-    
+
+    @Override
+    public void setDestinazione(PuntoRitiro destinazione) {
+        this.destinazione = destinazione;
+    }
 }

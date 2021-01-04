@@ -1,20 +1,23 @@
 package it.cs.unicam.ids.c3;
 
 
-    public class Corriere implements CorriereInterface{
+import it.cs.unicam.ids.c3.chiamata.ControllerChiamata;
+
+public class Corriere implements CorriereInterface{
         public  Corriere (String nome, String cognome, String email, Long cellulare, Boolean disposizione){
             super();
-            this.nome = nome;
-            this.cognome = cognome;
-            this.email= email;
-            this.cellulare = cellulare;
-            this.disposizione = disposizione;
+            setNome(nome);
+            setCognome(cognome);
+            setEmail(email);
+            this.cellulare = cellulare; // Da cambiare dopo aver finito a fare il metodo del metodo
+            setDisposizione(disposizione);
         }
         private String nome;
         private String cognome;
         private String email;
         private Long cellulare;
         private Boolean disposizione;
+        public ControllerChiamata cChiamata = new ControllerChiamata();
     
         public Corriere(){}
     
@@ -49,6 +52,14 @@ package it.cs.unicam.ids.c3;
         public void setDisposizione(Boolean disposizione){
             this.disposizione = disposizione;
         }
+
+    /**
+     * Questi due metodi sono stati creati per il caso d'uso
+     * visualizza chiamata che permette al Corriere di scegliere una chiamata
+     * tra una lista di chiamate disponibili
+     */
+    public void visuallizzaListaChiamate(){cChiamata.visualizzaChiamate();}
+        public void scegliChiamata(int index){cChiamata.scegliChiamata(index);}
 
         @Override
         public Long getClellulare() {

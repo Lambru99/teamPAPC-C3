@@ -11,6 +11,7 @@ public class Ordine implements OrdineInterface{
     private PuntoRitiro destinazione;
     private NegozioInterface emittente;
     private List<ProdottoInterface> prodotti;
+    private String stato;
 
     public Ordine(){
         this.id = new Random().nextInt(999999);

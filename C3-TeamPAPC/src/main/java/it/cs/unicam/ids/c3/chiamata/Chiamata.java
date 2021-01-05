@@ -1,15 +1,31 @@
 package it.cs.unicam.ids.c3.chiamata;
 
 
-public class Chiamata implements ControllerChiamataInterface{
-    private String info;
-    private long id;
-    private String stato;
+import it.cs.unicam.ids.c3.Ordine;
 
-    public Chiamata(String info, long id ) {
-        setInfo(info);
-        setId(id);
+import java.util.Random;
+
+public class Chiamata implements ControllerChiamataInterface{
+    private final long id;
+    private String stato;
+    private Ordine ordineAssociato;
+
+    public Chiamata (){
+        this.id= new Random().nextInt(999999);
+    }
+
+    public Chiamata(Ordine ordine) {
+        this();
+        setOrdineAssociato(ordine);
         this.stato="in sospeso";
+    }
+
+    public Ordine getOrdineAssociato() {
+        return ordineAssociato;
+    }
+
+    public void setOrdineAssociato(Ordine ordineAssociato) {
+        this.ordineAssociato = ordineAssociato;
     }
 
     public String getStato() {
@@ -20,19 +36,8 @@ public class Chiamata implements ControllerChiamataInterface{
         this.stato = stato;
     }
 
-    public String getInfo() {
-        return info;
-    }
-
-    public void setInfo(String info) {
-        this.info = info;
-    }
-
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
 }

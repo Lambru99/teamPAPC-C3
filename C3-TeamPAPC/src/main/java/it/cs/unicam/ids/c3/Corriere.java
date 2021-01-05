@@ -59,7 +59,14 @@ public class Corriere implements CorriereInterface{
      * tra una lista di chiamate disponibili
      */
     public void visuallizzaListaChiamate(){cChiamata.visualizzaChiamate();}
-        public void scegliChiamata(int index){cChiamata.scegliChiamata(index);}
+    public void scegliChiamata(long index){cChiamata.scegliChiamata(index);}
+
+    /**
+     *
+     *
+     *
+     */
+
 
         @Override
         public Long getClellulare() {

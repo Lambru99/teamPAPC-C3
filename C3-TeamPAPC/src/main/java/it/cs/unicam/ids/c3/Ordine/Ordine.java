@@ -1,11 +1,15 @@
-package it.cs.unicam.ids.c3;
+package it.cs.unicam.ids.c3.Ordine;
 
+
+import it.cs.unicam.ids.c3.NegozioInterface;
+import it.cs.unicam.ids.c3.ProdottoInterface;
+import it.cs.unicam.ids.c3.PuntoRitiro;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Ordine implements OrdineInterface{
+public class Ordine implements OrdineInterface {
     private final long id;
     private final long numeroRitiro;
     private PuntoRitiro destinazione;

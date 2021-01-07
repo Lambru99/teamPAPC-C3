@@ -1,6 +1,6 @@
-package it.cs.unicam.ids.c3;
+package it.cs.unicam.ids.c3.Commerciante;
 
-public class Commerciante implements CommercianteInterface{
+public class Commerciante implements CommercianteInterface {
     private String nome;
     private String cognome;
     private String email;

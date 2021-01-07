@@ -1,4 +1,8 @@
-package it.cs.unicam.ids.c3;
+package it.cs.unicam.ids.c3.Ordine;
+
+import it.cs.unicam.ids.c3.NegozioInterface;
+import it.cs.unicam.ids.c3.ProdottoInterface;
+import it.cs.unicam.ids.c3.PuntoRitiro;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package it.cs.unicam.ids.c3.chiamata;
 
 
-import it.cs.unicam.ids.c3.Ordine;
+import it.cs.unicam.ids.c3.Ordine.Ordine;
 
 import java.util.Random;
 

@@ -12,7 +12,7 @@ public class Prodotto implements ProdottoInterface{
     private String descrizione;
     private double prezzo;
     private long serialCode;
-    
+
     public Prodotto(){
         this.serialCode= new Random().nextInt(999999999);
     }

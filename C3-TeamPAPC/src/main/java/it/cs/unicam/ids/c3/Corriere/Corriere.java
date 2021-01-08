@@ -1,7 +1,6 @@
 package it.cs.unicam.ids.c3.Corriere;
 
 
-import it.cs.unicam.ids.c3.chiamata.ControllerChiamata;
 
 public class Corriere implements CorriereInterface {
         private String nome;

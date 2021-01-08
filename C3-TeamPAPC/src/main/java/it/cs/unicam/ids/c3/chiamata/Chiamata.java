@@ -7,7 +7,6 @@ import java.util.Random;
 
 public class Chiamata implements ControllerChiamataInterface{
     private final long id;
-    private String stato;
     private Ordine ordineAssociato;
 
     public Chiamata (){
@@ -17,7 +16,7 @@ public class Chiamata implements ControllerChiamataInterface{
     public Chiamata(Ordine ordine) {
         this();
         setOrdineAssociato(ordine);
-        this.stato="in sospeso";
+        ordine.setStato("in sospeso");
     }
 
     public Ordine getOrdineAssociato() {
@@ -28,13 +27,6 @@ public class Chiamata implements ControllerChiamataInterface{
         this.ordineAssociato = ordineAssociato;
     }
 
-    public String getStato() {
-        return stato;
-    }
-
-    public void setStato(String stato) {
-        this.stato = stato;
-    }
 
     public long getId() {
         return id;

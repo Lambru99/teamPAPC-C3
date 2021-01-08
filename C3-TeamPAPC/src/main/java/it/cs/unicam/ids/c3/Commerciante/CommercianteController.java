@@ -1,9 +1,9 @@
 package it.cs.unicam.ids.c3.Commerciante;
 
-import it.cs.unicam.ids.c3.Ordine.OrdineInSospesoController;
+import it.cs.unicam.ids.c3.Ordine.OrdineController;
 
 public class CommercianteController {
-    public OrdineInSospesoController oController;
+    public OrdineController oController;
 
     public String stampaOrdini(){
         return oController.printOrdini();

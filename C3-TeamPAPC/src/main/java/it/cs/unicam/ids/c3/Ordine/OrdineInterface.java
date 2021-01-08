@@ -14,4 +14,6 @@ public interface OrdineInterface {
     public long getId();
     public void setEmittente(NegozioInterface emittente);
     public void setDestinazione(PuntoRitiro destinazione);
+    public String getStato();
+    public void setStato(String stato);
 }

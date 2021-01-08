@@ -30,6 +30,16 @@ public class Ordine implements OrdineInterface {
     }
 
     @Override
+    public String getStato() {
+        return stato;
+    }
+
+    @Override
+    public void setStato(String stato) {
+        this.stato = stato;
+    }
+
+    @Override
     public List<ProdottoInterface> getProdotti() {
         return this.prodotti;
     }

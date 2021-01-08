@@ -1,14 +1,16 @@
 package it.cs.unicam.ids.c3;
 
 public interface ProdottoInterface {
-    public String getNome();
-    public String getDescrizione();
-    public double getPrezzo();
-    public int getId();
-    public int getNegozioId();
-    public void setNome(String nome);
-    public void setDescrizione(String descrizione);
-    public void setPrezzo(double prezzo);
-    public void setId(int id);
-    public void setNegozioId(int negozioId);
+    String getNome();
+    String getDescrizione();
+    double getPrezzo();
+    int getId();
+    int getNegozioId();
+    void setNome(String nome);
+    void setDescrizione(String descrizione);
+    void setPrezzo(double prezzo);
+    void setId(int id);
+    void setNegozioId(int negozioId);
+    long getSerialCode();
+    void setSerialCode(long serialCode);
 }

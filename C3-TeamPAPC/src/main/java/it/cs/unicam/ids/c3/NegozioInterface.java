@@ -1,5 +1,7 @@
 package it.cs.unicam.ids.c3;
 
+import it.cs.unicam.ids.c3.Commerciante.CommercianteInterface;
+
 import java.util.List;
 
 public interface NegozioInterface extends PuntoRitiro{

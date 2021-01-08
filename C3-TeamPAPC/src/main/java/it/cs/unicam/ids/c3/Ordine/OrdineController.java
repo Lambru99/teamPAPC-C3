@@ -32,4 +32,5 @@ public class OrdineController {
     public Ordine getOrdineByID(long id){
     return listaOrdine.stream().filter(ordine -> ordine.getId()==id).findFirst().orElseThrow(NullPointerException::new);
     }
+
 }

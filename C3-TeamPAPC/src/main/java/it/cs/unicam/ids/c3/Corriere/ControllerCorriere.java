@@ -11,5 +11,5 @@ public class ControllerCorriere {
     public void scegliChiamata(long index){cChiamata.scegliChiamata(index);}
     public void cambiaDisponibilita(@NotNull Corriere corriere){corriere.setDisposizione();}
     public void inizioTrasporto(Ordine ordine){ordine.setStato("In transito");}
-
+    public void consegnaOrdine(Ordine ordine){ordine.setStato("Pronto per il ritiro");}
 }

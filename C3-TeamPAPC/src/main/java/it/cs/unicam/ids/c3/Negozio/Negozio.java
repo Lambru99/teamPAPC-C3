@@ -1,6 +1,8 @@
-package it.cs.unicam.ids.c3;
+package it.cs.unicam.ids.c3.Negozio;
 
 import it.cs.unicam.ids.c3.Commerciante.CommercianteInterface;
+import it.cs.unicam.ids.c3.Prodotto;
+import it.cs.unicam.ids.c3.ProdottoInterface;
 
 import java.util.List;
 

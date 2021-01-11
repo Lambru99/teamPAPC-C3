@@ -1,7 +1,7 @@
 package it.cs.unicam.ids.c3.Ordine;
 
 
-import it.cs.unicam.ids.c3.NegozioInterface;
+import it.cs.unicam.ids.c3.Negozio.NegozioInterface;
 import it.cs.unicam.ids.c3.ProdottoInterface;
 import it.cs.unicam.ids.c3.PuntoRitiro;
 
@@ -23,10 +23,15 @@ public class Ordine implements OrdineInterface {
         this.prodotti = new ArrayList<>();
     }
 
-    public Ordine(PuntoRitiro destinazione, NegozioInterface emittente) {
+    public Ordine(NegozioInterface emittente){
         this();
-        this.destinazione = destinazione;
+        this.destinazione = null;
         this.emittente = emittente;
+    }
+
+    public Ordine(PuntoRitiro destinazione, NegozioInterface emittente) {
+        this(emittente);
+        this.destinazione = destinazione;
     }
 
     @Override

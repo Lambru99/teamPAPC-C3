@@ -15,10 +15,9 @@ import java.util.List;
 public class ConcreteOrdineCreator implements OrdineCreator{
     private NegozioInterface emittente;
     private PuntoRitiro destinazione;
-    private List<ProdottoInterface> prodotti;
+    private final List<ProdottoInterface> prodotti= new ArrayList<>();
 
     public ConcreteOrdineCreator(){
-        this.prodotti = new ArrayList<>();
         this.emittente = null;
         this.destinazione = null;
     }
@@ -49,13 +48,17 @@ public class ConcreteOrdineCreator implements OrdineCreator{
         return this.destinazione;
     }
 
+
+
     @Override
-    public void createOrdine() {
+    public OrdineInterface createOrdine() {
+        Ordine ordine;
     if (getDestinazione()==null){
-        newOrdine(getEmittente());
+       ordine = (Ordine) newOrdine(getEmittente());
     }else{
-        newOrdine(getDestinazione(),getEmittente());
+       ordine= (Ordine) newOrdine(getDestinazione(),getEmittente());
     }
+    return ordine;
     }
     public OrdineInterface newOrdine(PuntoRitiro destinazione,NegozioInterface emittente){
         OrdineInterface ordine = new Ordine(destinazione,emittente);
@@ -66,5 +69,9 @@ public class ConcreteOrdineCreator implements OrdineCreator{
         OrdineInterface ordine = new Ordine(emittente);
         Collections.addAll(ordine.getProdotti(),getProdotti().toArray(ProdottoInterface[]::new));
         return ordine;
+    }
+    public void addProdotto(Prodotto p,long number){
+        p.setNumberToBuy(number);
+        prodotti.add(p);
     }
 }

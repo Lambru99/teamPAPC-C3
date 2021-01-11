@@ -12,7 +12,7 @@ public class Prodotto implements ProdottoInterface{
     private String descrizione;
     private double prezzo;
     private long serialCode;
-
+    private long numberToBuy;
     public Prodotto(){
         this.serialCode= new Random().nextInt(999999999);
     }
@@ -85,4 +85,11 @@ public class Prodotto implements ProdottoInterface{
         this.negozioId = negozioId;
     }
 
+    public long getNumberToBuy() {
+        return numberToBuy;
+    }
+
+    public void setNumberToBuy(long numberToBuy) {
+        this.numberToBuy = numberToBuy;
+    }
 }

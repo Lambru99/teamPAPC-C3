@@ -36,19 +36,31 @@ public class ConcreteOrdineCreator implements OrdineCreator{
         return this.prodotti;
     }
 
-    @Override
+
     public NegozioInterface getEmittente() {
         return this.emittente;
     }
 
-    @Override
+
     public PuntoRitiro getDestinazione() {
         return this.destinazione;
     }
 
     @Override
-    public OrdineInterface createOrdine() {
-        OrdineInterface ordine = new Ordine(getDestinazione(),getEmittente());
+    public void createOrdine() {
+    if (getDestinazione()==null){
+        newOrdine(getEmittente());
+    }else{
+        newOrdine(getDestinazione(),getEmittente());
+    }
+    }
+    public OrdineInterface newOrdine(PuntoRitiro destinazione,NegozioInterface emittente){
+        OrdineInterface ordine = new Ordine(destinazione,emittente);
+        Collections.addAll(ordine.getProdotti(),getProdotti().toArray(ProdottoInterface[]::new));
+        return ordine;
+    }
+    public OrdineInterface newOrdine(NegozioInterface emittente) {
+        OrdineInterface ordine = new Ordine(emittente);
         Collections.addAll(ordine.getProdotti(),getProdotti().toArray(ProdottoInterface[]::new));
         return ordine;
     }

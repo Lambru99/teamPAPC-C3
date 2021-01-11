@@ -2,40 +2,26 @@ package it.cs.unicam.ids.c3.Cliente;
 
 
 import it.cs.unicam.ids.c3.Negozio.NegozioInterface;
+import it.cs.unicam.ids.c3.Ordine.ConcreteOrdineCreator;
 import it.cs.unicam.ids.c3.Ordine.OrdineController;
-import it.cs.unicam.ids.c3.Prodotto;
+import it.cs.unicam.ids.c3.ProdottoInterface;
 import it.cs.unicam.ids.c3.PuntoRitiro;
 
 public class ClienteController {
     OrdineController controller;
-    private NegozioInterface emittente;
-    private PuntoRitiro destinazione;
+    ConcreteOrdineCreator concreteOrdineCreator;
 
-    public NegozioInterface getEmittente() {
-        return emittente;
+    public void addProdotto(ProdottoInterface p){
+        concreteOrdineCreator.getProdotti().add(p);
     }
-
-    public void setEmittente(NegozioInterface emittente) {
-        this.emittente = emittente;
+    public void setEmittente(NegozioInterface emittente){
+        concreteOrdineCreator.setEmittente(emittente);
     }
-
-    public PuntoRitiro getDestinazione() {
-        return destinazione;
-    }
-
-    public void setDestinazione(PuntoRitiro destinazione) {
-        this.destinazione = destinazione;
-    }
-
-    public void aggiungiProdotto(Prodotto p){
-        controller.addProdotto(p);
+    public void setDestinazione(PuntoRitiro destinazione){
+        concreteOrdineCreator.setDestinazione(destinazione);
     }
     public void creaOrdine(){
-        if(destinazione==null){
-            controller.creaOrdine(emittente);
-        }else {
-            controller.creaOrdine(destinazione,emittente);
-        }
+    concreteOrdineCreator.createOrdine();
     }
 
 }

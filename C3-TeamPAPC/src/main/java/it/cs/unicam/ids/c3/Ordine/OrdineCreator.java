@@ -11,5 +11,5 @@ public interface OrdineCreator {
     void setEmittente(NegozioInterface emittente);
     void setDestinazione(PuntoRitiro destinazione);
     List<ProdottoInterface> getProdotti();
-    void createOrdine();
+    OrdineInterface createOrdine();
 }

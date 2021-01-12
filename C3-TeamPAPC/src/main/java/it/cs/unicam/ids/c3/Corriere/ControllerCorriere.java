@@ -2,7 +2,7 @@ package it.cs.unicam.ids.c3.Corriere;
 
 import com.sun.istack.NotNull;
 import it.cs.unicam.ids.c3.Ordine.Ordine;
-import it.cs.unicam.ids.c3.chiamata.ControllerChiamata;
+import it.cs.unicam.ids.c3.Chiamata.ControllerChiamata;
 
 public class ControllerCorriere {
     private ControllerChiamata cChiamata;

@@ -82,8 +82,9 @@ public class Cliente implements ClienteInterface {
     }
 
     @Override
-    public void setCellulare(Long cellulare) {
-        // TODO Auto-generated method stub
+    public void setCellulare(long cellulare) {
+
     }
-    
+
+
 }

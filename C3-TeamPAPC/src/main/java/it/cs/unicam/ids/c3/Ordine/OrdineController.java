@@ -1,7 +1,7 @@
 package it.cs.unicam.ids.c3.Ordine;
 
-import it.cs.unicam.ids.c3.chiamata.Chiamata;
-import it.cs.unicam.ids.c3.chiamata.ControllerChiamata;
+import it.cs.unicam.ids.c3.Chiamata.Chiamata;
+import it.cs.unicam.ids.c3.Chiamata.ControllerChiamata;
 
 import java.util.List;
 

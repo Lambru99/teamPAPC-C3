@@ -1,4 +1,4 @@
-package it.cs.unicam.ids.c3.chiamata;
+package it.cs.unicam.ids.c3.Chiamata;
 
 import it.cs.unicam.ids.c3.Ordine.Ordine;
 

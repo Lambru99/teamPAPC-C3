@@ -8,7 +8,7 @@ public interface ClienteInterface {
         public void setCognome(String cognome);
         public void setEmail(String email);
         long getCellulare();
-        public void setCellulare(Long cellulare);
+        public void setCellulare(long cellulare);
         public long getId();
 }
     

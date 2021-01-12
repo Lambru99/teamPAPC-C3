@@ -4,8 +4,8 @@ package it.cs.unicam.ids.c3.Cliente;
 import it.cs.unicam.ids.c3.Negozio.NegozioInterface;
 import it.cs.unicam.ids.c3.Ordine.ConcreteOrdineCreator;
 import it.cs.unicam.ids.c3.Ordine.Ordine;
-import it.cs.unicam.ids.c3.Prodotto;
-import it.cs.unicam.ids.c3.PuntoRitiro;
+import it.cs.unicam.ids.c3.Prodotto.Prodotto;
+import it.cs.unicam.ids.c3.Ritiro.PuntoRitiro;
 
 import java.util.List;
 

@@ -1,6 +1,7 @@
 package it.cs.unicam.ids.c3.Corriere;
 
 
+import java.util.Random;
 
 public class Corriere implements CorriereInterface {
         private String nome;
@@ -8,19 +9,29 @@ public class Corriere implements CorriereInterface {
         private String email;
         private Long cellulare;
         private boolean disposizione;
+        private String password;
+        private long id;
 
         public Corriere(){
             this.disposizione=false;
+            this.id = new Random().nextInt(999999);
         }
 
-        public  Corriere (String nome, String cognome, String email, Long cellulare){
+        public  Corriere (String nome, String cognome, String email, Long cellulare,String password){
         this();
+        setPassword(password);
         setNome(nome);
         setCognome(cognome);
         setEmail(email);
-        this.cellulare = cellulare; // Da cambiare dopo aver finito a fare il metodo del metodo
-    }
+        setCellulare(cellulare);
+        }
 
+        public String getPassword() {
+        return password;
+    }
+        public void setPassword(String password) {
+        this.password = password;
+    }
         public String  getNome(){
              return this.nome;
         }
@@ -30,7 +41,7 @@ public class Corriere implements CorriereInterface {
         public String getEmail(){
             return this.email;
         }
-        public Long getCellulare(){
+        public long getCellulare(){
             return this.cellulare;
         }
         public Boolean getDisposizione(){
@@ -45,28 +56,14 @@ public class Corriere implements CorriereInterface {
         public void setEmail(String email){
             this.email = email;
         }
-        public void setCellulare(Long cellulare){
+        public void setCellulare(long cellulare){
             this.cellulare = cellulare;
         }
-
         public void setDisposizione(){
             this.disposizione= !this.disposizione;
         }
 
 
-
-
-        @Override
-        public Long getClellulare() {
-            // TODO Auto-generated method stub
-            return null;
-        }
-
-        @Override
-        public void setcellulare(Long cellulare) {
-            // TODO Auto-generated method stub
-
-        }
     
     }
     

@@ -1,10 +1,10 @@
-package it.cs.unicam.ids.c3;
+package it.cs.unicam.ids.c3.Prodotto;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Random;
 
-public class Prodotto implements ProdottoInterface{
+public class Prodotto implements ProdottoInterface {
     //in teoria questo id sarà creato automaticamente nel db
     private @Id @GeneratedValue int id;
     private int negozioId;

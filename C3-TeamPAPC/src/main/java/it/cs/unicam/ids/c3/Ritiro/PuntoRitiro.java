@@ -1,4 +1,4 @@
-package it.cs.unicam.ids.c3;
+package it.cs.unicam.ids.c3.Ritiro;
 
 public interface PuntoRitiro {
     String getIndirizzo();

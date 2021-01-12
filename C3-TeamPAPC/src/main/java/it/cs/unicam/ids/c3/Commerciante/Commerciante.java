@@ -1,86 +1,76 @@
 package it.cs.unicam.ids.c3.Commerciante;
 
+import java.util.Random;
+
 public class Commerciante implements CommercianteInterface {
     private String nome;
     private String cognome;
     private String email;
     private String negozio;
     private long cellulare;
+    private String password;
+    private long id;
 
-    public String getNome() {
-        return this.nome;
+    public Commerciante(){
+        this.id = new Random().nextInt(999999);
     }
 
+    public Commerciante(String nome, String cognome, String email, String negozio, long cellulare, String password) {
+        super();
+        this.nome = nome;
+        this.cognome = cognome;
+        this.email = email;
+        this.negozio = negozio;
+        this.cellulare = cellulare;
+        this.password = password;
+    }
+
+    @Override
+    public String getNome() {
+        return nome;
+    }
+    @Override
     public void setNome(String nome) {
         this.nome = nome;
     }
-
+    @Override
     public String getCognome() {
-        return this.cognome;
+        return cognome;
     }
-
+    @Override
     public void setCognome(String cognome) {
         this.cognome = cognome;
     }
-
+    @Override
     public String getEmail() {
-        return this.email;
+        return email;
     }
-
+    @Override
     public void setEmail(String email) {
         this.email = email;
     }
-
+    @Override
     public String getNegozio() {
-        return this.negozio;
+        return negozio;
     }
-
+    @Override
     public void setNegozio(String negozio) {
         this.negozio = negozio;
     }
-
+    @Override
     public long getCellulare() {
-        return this.cellulare;
+        return cellulare;
     }
-
+    @Override
     public void setCellulare(long cellulare) {
         this.cellulare = cellulare;
     }
-
     @Override
-    public void aggiungiProdotto() {
-
+    public String getPassword() {
+        return password;
     }
-
     @Override
-    public void rimuoviProdotto() {
-
+    public void setPassword(String password) {
+        this.password = password;
     }
-
-    @Override
-    public void modificaProdotto() {
-
-    }
-
-    @Override
-    public void visualizzaProdotto() {
-
-    }
-
-    @Override
-    public void visualizzaOrdine() {
-
-    }
-
-    @Override
-    public void confermaOrdine() {
-
-    }
-
-    @Override
-    public void chiamaCorriere() {
-
-    }
-
-    
 }

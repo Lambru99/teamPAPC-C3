@@ -1,4 +1,6 @@
-package it.cs.unicam.ids.c3;
+package it.cs.unicam.ids.c3.Ritiro;
+
+import it.cs.unicam.ids.c3.Ritiro.PuntoRitiro;
 
 public class Locker implements PuntoRitiro {
     @Override

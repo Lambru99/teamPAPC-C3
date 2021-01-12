@@ -9,16 +9,19 @@ public class Cliente implements ClienteInterface {
     private String email;
     private long cellulare;
     private final long id;
+    private String password;
+
 
     public Cliente(){
         this.id = new Random().nextInt(999999);
     }
 
-    public Cliente(String nome, String cognome, String email) {
+    public Cliente(String nome, String cognome, String email,String password) {
         this();
         this.nome = nome;
         this.cognome = cognome;
         this.email = email;
+        setPassword(password);
     }
 
     public Cliente (String nome, String cognome, String email, Long cellulare){
@@ -27,6 +30,14 @@ public class Cliente implements ClienteInterface {
         this.cognome = cognome;
         this.email= email;
         this.cellulare = cellulare;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override

@@ -1,25 +1,27 @@
 package it.cs.unicam.ids.c3.Chiamata;
 
+
+import it.cs.unicam.ids.c3.Repository.ChiamataRepository;
+
 import java.util.List;
 
 public class ControllerChiamata{
-     List<Chiamata> chiamataList;
-
+    private ChiamataRepository lista;
     public void aggiungiChiamata(Chiamata chiamata){
-        this.chiamataList.add(chiamata);
+        lista.getListaChiamate().add(chiamata);
     }
 
-    public String visualizzaChiamate(){
-        return chiamataList.toString();
+    public List<ControllerChiamataInterface> visualizzaChiamate(){
+        return lista.getListaChiamate();
     }
 
     public void scegliChiamata(long id){
-        Chiamata cDaEliminare = getChiamatabyID(id);
-        chiamataList.remove(cDaEliminare);
+        ControllerChiamataInterface cDaEliminare = getChiamatabyID(id);
+        lista.getListaChiamate().remove(cDaEliminare);
     }
 
-    public Chiamata getChiamatabyID(long id){
-        return chiamataList.stream().filter(chiamata -> chiamata.getId()==id).findFirst().orElseThrow(NullPointerException::new);
+    public ControllerChiamataInterface getChiamatabyID(long id){
+        return lista.getListaChiamate().stream().filter(chiamata -> chiamata.getId()==id).findFirst().orElseThrow(NullPointerException::new);
 
     }
 }

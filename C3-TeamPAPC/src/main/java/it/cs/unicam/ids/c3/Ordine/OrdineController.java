@@ -6,7 +6,7 @@ import it.cs.unicam.ids.c3.Chiamata.ControllerChiamata;
 import java.util.List;
 
 public class OrdineController {
-    private List<Ordine> listaOrdine;
+/*    private List<Ordine> listaOrdine;
 
     public String printOrdini(){
         return listaOrdine.toString();
@@ -22,5 +22,5 @@ public class OrdineController {
     public Ordine getOrdineByID(long id){
     return listaOrdine.stream().filter(ordine -> ordine.getId()==id).findFirst().orElseThrow(NullPointerException::new);
     }
-
+*/
 }

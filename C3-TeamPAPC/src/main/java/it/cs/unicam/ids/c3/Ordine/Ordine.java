@@ -33,6 +33,7 @@ public class Ordine implements OrdineInterface {
         this.destinazione = destinazione;
     }
 
+
     @Override
     public String getStato() {
         return stato;

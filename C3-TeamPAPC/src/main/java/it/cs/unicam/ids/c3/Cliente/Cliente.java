@@ -1,5 +1,9 @@
 package it.cs.unicam.ids.c3.Cliente;
 
+import it.cs.unicam.ids.c3.Ordine.OrdineInterface;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Cliente implements ClienteInterface {
@@ -10,10 +14,12 @@ public class Cliente implements ClienteInterface {
     private long cellulare;
     private final long id;
     private String password;
+    private List<OrdineInterface> listaOrdine;
 
 
     public Cliente(){
         this.id = new Random().nextInt(999999);
+        this.listaOrdine=new ArrayList<>();
     }
 
     public Cliente(String nome, String cognome, String email,String password) {
@@ -38,6 +44,10 @@ public class Cliente implements ClienteInterface {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    @Override
+    public List<OrdineInterface> getListaOrdine() {
+        return listaOrdine;
     }
 
     @Override

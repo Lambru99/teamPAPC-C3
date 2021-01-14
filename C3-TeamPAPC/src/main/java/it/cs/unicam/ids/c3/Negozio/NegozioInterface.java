@@ -13,7 +13,5 @@ public interface NegozioInterface extends PuntoRitiro {
     public Prodotto cercaProdotto();
     public String getNome();
     public void setNome(String nome);
-    public void setProprietario(CommercianteInterface proprietario);
-    public CommercianteInterface getProprietario();
     public List<ProdottoInterface> getProdotti();
 }

@@ -12,8 +12,29 @@ public class Negozio implements NegozioInterface {
     private String indirizzo;
     private String orario;
     private long recapito;
-    private CommercianteInterface proprietario;
+    private long idProprietario;
     private List<ProdottoInterface> prodotti;
+    private String nomeCommerciante;
+    private String cognomeCommerciante;
+    private String emailCommerciante;
+
+    public Negozio(){
+
+    }
+
+    public Negozio(String nome, String indirizzo, String orario, long recapito, long idProprietario, String nomeCommerciante,
+                   String cognomeCommerciante,String emailCommerciante,List<ProdottoInterface> prodotti) {
+        super();
+        this.nome = nome;
+        this.indirizzo = indirizzo;
+        this.orario = orario;
+        this.recapito = recapito;
+        this.idProprietario = idProprietario;
+        this.nomeCommerciante=nomeCommerciante;
+        this.cognomeCommerciante=cognomeCommerciante;
+        this.emailCommerciante=emailCommerciante;
+        this.prodotti = prodotti;
+    }
 
     @Override
     public String getNome() {
@@ -52,23 +73,10 @@ public class Negozio implements NegozioInterface {
         this.recapito = recapito;
     }
 
-    @Override
-    public CommercianteInterface getProprietario() {
-        return this.proprietario;
-    }
-
-    @Override
-    public void setProprietario(CommercianteInterface proprietario) {
-        this.proprietario = proprietario;
-    }
 
     @Override
     public List<ProdottoInterface> getProdotti() {
         return this.prodotti;
-    }
-
-    public void setProdotti(List<ProdottoInterface> prodotti) {
-        this.prodotti = prodotti;
     }
 
     @Override

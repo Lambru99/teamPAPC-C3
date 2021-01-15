@@ -1,14 +1,14 @@
-package it.cs.unicam.ids.c3.Repository;
+package it.cs.unicam.ids.c3.repository;
 
 import it.cs.unicam.ids.c3.Negozio.NegozioInterface;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class NegozioRepository {
+public class NegozioRep {
     List<NegozioInterface> negozi;
 
-    public NegozioRepository(){
+    public NegozioRep(){
         this.negozi=new ArrayList<>();
     }
     public void addNegozio(NegozioInterface negozio){

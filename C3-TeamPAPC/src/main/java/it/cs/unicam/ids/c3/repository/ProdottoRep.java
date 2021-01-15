@@ -1,14 +1,14 @@
-package it.cs.unicam.ids.c3.Repository;
+package it.cs.unicam.ids.c3.repository;
 
 import it.cs.unicam.ids.c3.Prodotto.ProdottoInterface;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProdottoRepository {
+public class ProdottoRep {
     private List<ProdottoInterface> prodotti;
 
-    public ProdottoRepository (){
+    public ProdottoRep(){
         this.prodotti=new ArrayList<>();
     }
     public void addProdotto(ProdottoInterface prodotto){

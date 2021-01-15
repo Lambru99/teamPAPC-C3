@@ -1,12 +1,12 @@
 package it.cs.unicam.ids.c3.Chiamata;
 
 
-import it.cs.unicam.ids.c3.Repository.ChiamataRepository;
+import it.cs.unicam.ids.c3.repository.ChiamataRep;
 
 import java.util.List;
 
 public class ControllerChiamata{
-    private ChiamataRepository lista;
+    private ChiamataRep lista;
     public void aggiungiChiamata(Chiamata chiamata){
         lista.getListaChiamate().add(chiamata);
     }

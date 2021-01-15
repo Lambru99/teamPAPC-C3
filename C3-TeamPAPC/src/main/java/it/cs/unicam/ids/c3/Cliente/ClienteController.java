@@ -2,7 +2,7 @@ package it.cs.unicam.ids.c3.Cliente;
 
 
 import it.cs.unicam.ids.c3.Negozio.NegozioInterface;
-import it.cs.unicam.ids.c3.Ordine.ConcreteOrdineCreator;
+import it.cs.unicam.ids.c3.Ordine.ConcreteCreatoreOrdine;
 import it.cs.unicam.ids.c3.Ordine.Ordine;
 import it.cs.unicam.ids.c3.Ordine.OrdineInterface;
 import it.cs.unicam.ids.c3.Prodotto.Prodotto;
@@ -11,7 +11,7 @@ import it.cs.unicam.ids.c3.Ritiro.PuntoRitiro;
 import java.util.List;
 
 public class ClienteController {
-    ConcreteOrdineCreator concreteOrdineCreator;
+    ConcreteCreatoreOrdine concreteOrdineCreator;
 
     public void addProdotto(Prodotto p, long n){
         concreteOrdineCreator.addProdotto(p,n);

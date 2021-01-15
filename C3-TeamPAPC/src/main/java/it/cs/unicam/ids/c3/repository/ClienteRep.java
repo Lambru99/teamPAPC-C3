@@ -1,14 +1,14 @@
-package it.cs.unicam.ids.c3.Repository;
+package it.cs.unicam.ids.c3.repository;
 
 import it.cs.unicam.ids.c3.Cliente.ClienteInterface;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClienteRepository {
+public class ClienteRep {
     private List<ClienteInterface> clienti;
 
-    public ClienteRepository() {
+    public ClienteRep() {
         this.clienti = new ArrayList<>();
     }
     public void addCliente(ClienteInterface cliente){

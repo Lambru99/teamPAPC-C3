@@ -1,5 +1,6 @@
 package it.cs.unicam.ids.c3.entity;
 
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;

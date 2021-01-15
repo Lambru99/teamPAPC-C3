@@ -1,15 +1,15 @@
-package it.cs.unicam.ids.c3.Repository;
+package it.cs.unicam.ids.c3.repository;
 
 import it.cs.unicam.ids.c3.Commerciante.CommercianteInterface;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CommercianteRepository {
+public class CommercianteRep {
 
     private List<CommercianteInterface> commercianti;
 
-    public CommercianteRepository(){
+    public CommercianteRep(){
         this.commercianti= new ArrayList<>();
     }
     public void addCommerciante(CommercianteInterface commerciante){

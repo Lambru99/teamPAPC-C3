@@ -1,14 +1,14 @@
-package it.cs.unicam.ids.c3.Repository;
+package it.cs.unicam.ids.c3.repository;
 
 import it.cs.unicam.ids.c3.Corriere.CorriereInterface;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CorriereRepository {
+public class CorriereRep {
     private List<CorriereInterface>corrieri;
 
-    public CorriereRepository(){
+    public CorriereRep(){
         this.corrieri= new ArrayList<>();
     }
     public void addCorriere(CorriereInterface corriere){

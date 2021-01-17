@@ -1,6 +1,6 @@
 package it.cs.unicam.ids.c3.repository;
 
-import it.cs.unicam.ids.c3.Negozio.NegozioInterface;
+import it.cs.unicam.ids.c3.NegozioPack.NegozioInterface;
 
 import java.util.ArrayList;
 import java.util.List;

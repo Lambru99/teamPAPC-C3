@@ -1,6 +1,8 @@
 package it.cs.unicam.ids.c3.entity;
 
 
+import it.cs.unicam.ids.c3.RitiroPack.PuntoRitiro;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +44,16 @@ public class LockerEntity implements PuntoRitiro {
     @Override
     public String getOrario() {
         return this.orario;
+    }
+
+    @Override
+    public void setIndirizzo(String indirizzo) {
+        this.indirizzo = indirizzo;
+    }
+
+    @Override
+    public void setOrario(String orario) {
+        this.orario = orario;
     }
 
     @Override

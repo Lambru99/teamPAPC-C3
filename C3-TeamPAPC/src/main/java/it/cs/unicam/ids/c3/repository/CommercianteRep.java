@@ -1,6 +1,6 @@
 package it.cs.unicam.ids.c3.repository;
 
-import it.cs.unicam.ids.c3.Commerciante.CommercianteInterface;
+import it.cs.unicam.ids.c3.CommerciantePack.CommercianteInterface;
 
 import java.util.ArrayList;
 import java.util.List;

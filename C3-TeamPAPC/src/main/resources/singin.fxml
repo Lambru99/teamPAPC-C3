@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.cs.unicam.ids.c3.view.singinController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.cs.unicam.ids.c3.view.SinginController">
    <children>
       <TextField fx:id="singinCognome" layoutX="118.0" layoutY="149.0" prefHeight="26.0" prefWidth="364.0" />
       <TextField fx:id="singinNome" layoutX="118.0" layoutY="101.0" prefHeight="26.0" prefWidth="364.0" />

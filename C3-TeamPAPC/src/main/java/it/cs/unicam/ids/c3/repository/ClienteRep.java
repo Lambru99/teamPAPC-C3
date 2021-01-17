@@ -1,6 +1,6 @@
 package it.cs.unicam.ids.c3.repository;
 
-import it.cs.unicam.ids.c3.Cliente.ClienteInterface;
+import it.cs.unicam.ids.c3.ClientePack.ClienteInterface;
 
 import java.util.ArrayList;
 import java.util.List;

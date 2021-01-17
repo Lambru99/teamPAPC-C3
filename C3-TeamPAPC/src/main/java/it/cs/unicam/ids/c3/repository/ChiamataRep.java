@@ -1,6 +1,6 @@
 package it.cs.unicam.ids.c3.repository;
 
-import it.cs.unicam.ids.c3.Chiamata.ControllerChiamataInterface;
+import it.cs.unicam.ids.c3.ChiamataPack.ControllerChiamataInterface;
 
 import java.util.ArrayList;
 import java.util.List;

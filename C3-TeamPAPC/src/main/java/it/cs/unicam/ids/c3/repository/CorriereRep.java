@@ -1,6 +1,6 @@
 package it.cs.unicam.ids.c3.repository;
 
-import it.cs.unicam.ids.c3.Corriere.CorriereInterface;
+import it.cs.unicam.ids.c3.CorrierePack.CorriereInterface;
 
 import java.util.ArrayList;
 import java.util.List;

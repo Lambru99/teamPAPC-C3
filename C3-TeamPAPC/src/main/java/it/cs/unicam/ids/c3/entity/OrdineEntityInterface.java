@@ -17,13 +17,13 @@ public interface OrdineEntityInterface {
 
     void setNumeroOrdine(long numeroOrdine);
 
-    LockerEntity getDestinazione();
+    PuntoRitiroEntity getDestinazione();
 
-    void setDestinazione(LockerEntity destinazione);
+    void setDestinazione(PuntoRitiroEntity destinazione);
 
     NegozioEntity getEmittente();
 
-    void setEmittente(NegozioEntity emittente);
+    void setEmittente(NegozioEntityInterface emittente);
 
     List<ProdottoEntity> getProdotti();
 

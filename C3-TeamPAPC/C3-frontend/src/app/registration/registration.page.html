@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>registration</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating"> Nome</ion-label>
+      <ion-input [(ngModel)]="user.nome" [name] = "['nome']" [clearOnEdit] = "['false']" [required] = "['true']"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating"> Cognome</ion-label>
+      <ion-input [(ngModel)]="user.cognome" [name] = "['cognome']" [clearOnEdit] = "['false']"  [required] = "['true']"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating"> Email</ion-label>
+      <ion-input [(ngModel)]="user.email" [inputmode] = "['email']" [name] = "['email']" [type] = "['email']" [clearOnEdit] = "['false']"  [required] = "['true']"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating"> Password</ion-label>
+      <ion-input [(ngModel)]="user.password" [name] = "['password']" [clearInput] = "['true']" [type] = "['password']" [clearOnEdit] = "['true']"  [required] = "['true']"></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-button (click)="alertCliente()">registra Cliente</ion-button>
+</ion-content>

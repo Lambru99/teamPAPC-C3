@@ -1,0 +1,7 @@
+{
+  "name": "C3RestIonic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

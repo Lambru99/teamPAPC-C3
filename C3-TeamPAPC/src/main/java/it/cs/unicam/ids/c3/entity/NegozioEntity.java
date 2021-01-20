@@ -4,8 +4,9 @@ import javax.persistence.*;
 import java.util.*;
 
 @Entity
+
 @Table(name = "negozi")
-public class NegozioEntity implements PuntoRitiroEntity {
+public class NegozioEntity implements PuntoRitiro {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(name = "nome")
@@ -115,8 +116,14 @@ public class NegozioEntity implements PuntoRitiroEntity {
                 ", descrizione='" + getDescrizione() + '\'' +
                 ", indirizzo='" + getIndirizzo() + '\'' +
                 ", orario='" + getOrario() + '\'' +
-                ", prodotti=" + getProdotti() +
+                ", prodotti=" + getProdotti() + '\'' +
+                ", ordini=" + getOrdini() +
                 '}';
     }
+
+    /*public void addProdotto(Prodotto prodotto){
+        prodotto.setNegozio(this);
+        getProdotti().add(prodotto);
+    }*/
 
 }

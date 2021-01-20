@@ -1,13 +1,14 @@
 package it.cs.unicam.ids.c3.entity;
 
 
-import it.cs.unicam.ids.c3.RitiroPack.PuntoRitiro;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
+
 @Table(name = "lockers")
 public class LockerEntity implements PuntoRitiro {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,16 +48,6 @@ public class LockerEntity implements PuntoRitiro {
     }
 
     @Override
-    public void setIndirizzo(String indirizzo) {
-        this.indirizzo = indirizzo;
-    }
-
-    @Override
-    public void setOrario(String orario) {
-        this.orario = orario;
-    }
-
-    @Override
     public String getNome() {
         return this.nome;
     }
@@ -66,4 +57,27 @@ public class LockerEntity implements PuntoRitiro {
         return this.ordini;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LockerEntity that = (LockerEntity) o;
+        return id == that.id && nome.equals(that.nome) && indirizzo.equals(that.indirizzo) && orario.equals(that.orario) && ordini.equals(that.ordini);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nome, indirizzo, orario, ordini);
+    }
+
+    @Override
+    public String toString() {
+        return "LockerEntity{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", indirizzo='" + indirizzo + '\'' +
+                ", orario='" + orario + '\'' +
+                ", ordini=" + ordini +
+                '}';
+    }
 }

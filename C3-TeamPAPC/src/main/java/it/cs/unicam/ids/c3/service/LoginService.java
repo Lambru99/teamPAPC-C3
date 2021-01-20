@@ -4,45 +4,73 @@ package it.cs.unicam.ids.c3.service;
 import it.cs.unicam.ids.c3.repository.ClienteRepository;
 import it.cs.unicam.ids.c3.repository.CommercianteRepository;
 import it.cs.unicam.ids.c3.repository.CorriereRepository;
+import it.cs.unicam.ids.c3.util.MyUserType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class LoginService {
-    public static String ruolo;
     @Autowired
-    private ClienteRepository listaClienti;
+    private ClienteRepository clienteRepository;
     @Autowired
-    private CommercianteRepository listaCommerciante;
+    private CommercianteRepository commercianteRepository;
     @Autowired
-    private CorriereRepository listaCorriere;
+    private CorriereRepository corriereRepository;
 
     public LoginService() {
     }
 
-    public LoginService(String ruolo, String email, String password) {
-        this();
-        LoginService.ruolo=ruolo.toLowerCase();
-        switch (LoginService.ruolo) {
-            case "cliente": loginCliente(email,password);break;
-            case "commerciante": loginCommerciante(email,password);break;
-            case "corriere": loginCorriere(email,password);break;
-            default:throw new IllegalArgumentException("Ruolo inesistente");
+    private long getClienteId(String email,String password){
+        if (verifyPresenceOfCliente(email,password))
+            return this.clienteRepository.findAll().stream()
+                    .filter(clienteEntity ->(clienteEntity.getEmail().equals(email)
+                            && clienteEntity.getPassword().equals(password))).findFirst()
+                    .orElseThrow(NullPointerException::new).getId();
+        else return 0;
+    }
+    private long getCorriereId(String email,String password){
+        if (verifyPresenceOfCorriere(email, password))
+            return this.corriereRepository.findAll().stream()
+                    .filter(corriereEntity ->(corriereEntity.getEmail().equals(email)
+                            && corriereEntity.getPassword().equals(password))).findFirst()
+                    .orElseThrow(NullPointerException::new).getId();
+        else return 0;
+    }
+
+    private long getCommercianteId(String email,String password){
+        if (verifyPresenceOfCommerciante(email,password))
+            return this.commercianteRepository.findAll().stream()
+                    .filter(commercianteEntity ->(commercianteEntity.getEmail().equals(email)
+                            && commercianteEntity.getPassword().equals(password))).findFirst()
+                    .orElseThrow(NullPointerException::new).getId();
+        else return 0;
+    }
+
+
+    public long getUserId(String userType,String email,String password){
+        long id=0;
+        MyUserType u = MyUserType.valueOf(userType.toUpperCase());
+        switch (u){
+            case CLIENTE:id = getClienteId(email,password);
+                break;
+            case CORRIERE:id=getCorriereId(email,password);
+                break;
+            case COMMERCIANTE:id = getCommercianteId(email,password);
+                break;
         }
-        LoginService.ruolo =ruolo;
+        return id;
     }
 
-    public void loginCliente(String email,String password){
-        listaClienti.findAll().stream().filter(clienteEntity -> (clienteEntity.getEmail().equals(email)&&clienteEntity
-                .getPassword().equals(password))).findFirst().orElseThrow();
+    private boolean verifyPresenceOfCliente(String email,String password){
+        return this.clienteRepository.findAll().stream().anyMatch(clienteEntity ->(clienteEntity.getEmail().equals(email)
+                && clienteEntity.getPassword().equals(password)));
     }
-    public void loginCommerciante(String email,String password){
-        listaCommerciante.findAll().stream().filter(commercianteEntity-> (commercianteEntity.getEmail()
-                .equals(email)&&commercianteEntity.getPassword().equals(password))).findFirst().orElseThrow();
+    private boolean verifyPresenceOfCommerciante(String email,String password){
+        return this.commercianteRepository.findAll().stream().anyMatch(clienteEntity ->(clienteEntity.getEmail().equals(email)
+                && clienteEntity.getPassword().equals(password)));
     }
-    public void loginCorriere(String email,String password){
-        listaCorriere.findAll().stream().filter(corriereEntity-> (corriereEntity.getEmail()
-                .equals(email)&&corriereEntity.getPassword().equals(password))).findFirst().orElseThrow();
+    private boolean verifyPresenceOfCorriere(String email,String password){
+        return this.corriereRepository.findAll().stream().anyMatch(clienteEntity ->(clienteEntity.getEmail().equals(email)
+                && clienteEntity.getPassword().equals(password)));
     }
-
 }

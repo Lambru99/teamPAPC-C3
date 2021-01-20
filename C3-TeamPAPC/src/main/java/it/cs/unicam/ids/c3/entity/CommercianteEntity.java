@@ -1,7 +1,9 @@
 package it.cs.unicam.ids.c3.entity;
+
 import javax.persistence.*;
 
 @Entity
+
 @Table(name = "commercianti")
 public class CommercianteEntity {
     private @Id

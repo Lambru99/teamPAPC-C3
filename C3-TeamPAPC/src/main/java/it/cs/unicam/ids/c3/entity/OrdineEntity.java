@@ -7,6 +7,7 @@ import java.util.Objects;
 import java.util.Random;
 
 @Entity
+
 @Table(name = "ordini")
 public class OrdineEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -77,15 +78,15 @@ public class OrdineEntity {
     }
 
     public LockerEntity getDestinazione() {
-        return this.destinazione;
+        return destinazione;
     }
 
     public void setDestinazione(LockerEntity destinazione) {
         this.destinazione = destinazione;
     }
 
-    public NegozioEntityInterface getEmittente() {
-        return ((NegozioEntityInterface) emittente);
+    public NegozioEntity getEmittente() {
+        return emittente;
     }
 
     public void setEmittente(NegozioEntity emittente) {
@@ -104,6 +105,7 @@ public class OrdineEntity {
         return soldi;
     }
 
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -111,15 +113,20 @@ public class OrdineEntity {
         return id == ordine.id && numeroOrdine == ordine.numeroOrdine && Double.compare(ordine.soldi, soldi) == 0 && Objects.equals(destinazione, ordine.destinazione) && Objects.equals(emittente, ordine.emittente) && Objects.equals(prodotti, ordine.prodotti);
     }
 
+    @Override
     public int hashCode() {
         return Objects.hash(id, numeroOrdine, destinazione, emittente, prodotti, soldi);
     }
 
+    @Override
     public String toString() {
+        String s;
+        if (getDestinazione()== null) s = "null";
+        else s = getDestinazione().toString();
         return "Ordine{" +
                 "id=" + getId() +
                 ", numeroOrdine=" + getNumeroOrdine() +
-                ", destinazione=" + getDestinazione().toString() +
+                ", destinazione=" + s +
                 ", emittente=" + getEmittente().toString() +
                 ", prodotti=" + getProdotti() +
                 ", soldi=" + getSoldi() +
@@ -131,4 +138,3 @@ public class OrdineEntity {
         this.id = id;
     }
 }
-

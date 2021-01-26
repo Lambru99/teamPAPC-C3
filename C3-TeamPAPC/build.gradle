@@ -11,7 +11,7 @@ sourceCompatibility = '11'
 
 repositories {
 	mavenCentral()
-
+	jcenter()
 }
 
 ext {
@@ -30,6 +30,7 @@ dependencies {
 	runtimeOnly 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+	testCompile "org.mockito:mockito-core:2.+"
 
 }
 

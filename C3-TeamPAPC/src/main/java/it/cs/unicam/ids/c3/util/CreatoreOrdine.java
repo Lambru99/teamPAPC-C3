@@ -9,8 +9,6 @@ import java.util.List;
 
 public interface CreatoreOrdine {
     void setEmittente(NegozioEntity emittente);
-    void addProdotto(ProdottoEntity prodotto);
-
     void addProdotto(ProdottoEntity prodotto, int numero);
 
     LockerEntity getDestinazione();
@@ -21,4 +19,5 @@ public interface CreatoreOrdine {
     ProdottoEntity getProdottoBySerialCode(long code);
     OrdineEntity creaOrdine();
     NegozioEntity getEmittente();
+/*    void gestisciProdottoEmittente();*/
 }

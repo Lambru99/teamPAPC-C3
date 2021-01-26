@@ -1,5 +1,7 @@
 package it.cs.unicam.ids.c3.entity;
 
+import it.cs.unicam.ids.c3.PuntoRitiro;
+
 import javax.persistence.*;
 import java.util.*;
 
@@ -19,12 +21,12 @@ public class NegozioEntity implements PuntoRitiro {
     private String orario;
     @OneToMany(cascade = CascadeType.ALL)
     private List<ProdottoEntity> prodotti;
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<OrdineEntity> ordini;
+/*    @OneToMany(cascade = CascadeType.ALL)
+    private List<OrdineEntity> ordini;*/
 
     public NegozioEntity() {
         this.prodotti = new ArrayList<>();
-        this.ordini = new ArrayList<>();
+        //this.ordini = new ArrayList<>();
     }
 
     public NegozioEntity(String nome, String descrizione, String indirizzo, String orario) {
@@ -35,10 +37,10 @@ public class NegozioEntity implements PuntoRitiro {
         this.orario = orario;
     }
 
-    @Override
+    /*@Override
     public List<OrdineEntity> getOrdini() {
         return ordini;
-    }
+    }*/
 
     /*public void addProdotto(Prodotto prodotto){
         addProdotto(prodotto,1);
@@ -56,7 +58,7 @@ public class NegozioEntity implements PuntoRitiro {
         }
     }*/
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -116,8 +118,7 @@ public class NegozioEntity implements PuntoRitiro {
                 ", descrizione='" + getDescrizione() + '\'' +
                 ", indirizzo='" + getIndirizzo() + '\'' +
                 ", orario='" + getOrario() + '\'' +
-                ", prodotti=" + getProdotti() + '\'' +
-                ", ordini=" + getOrdini() +
+                ", prodotti=" + getProdotti() +
                 '}';
     }
 

@@ -15,7 +15,7 @@ public class LoginRestController {
     }
 
     @GetMapping
-    public long isCorrect(@RequestParam String type, @RequestParam String email, @RequestParam String password){
+    public long isCorrect(@RequestParam String type,@RequestParam String email,@RequestParam String password){
         return this.loginService.getUserId(type,email,password);
     }
 }

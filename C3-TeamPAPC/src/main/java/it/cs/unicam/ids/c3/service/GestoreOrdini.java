@@ -87,7 +87,7 @@ public class GestoreOrdini {
                 +"; inidirizzo: "+ordineEntity.getDestinazione().getIndirizzo()+"; ";
 
         ObjectStringer<OrdineEntity> stringer = o -> "id: "+o.getId()+"; numero: "+o.getNumeroOrdine()
-                +"; prezzo: "+o.getSoldi()+"; ";
+                +"; prezzo: "+o.getSoldi()+"; stato: "+o.getStatoOrdine().toString()+"; ";
         ObjectStringer<ProdottoEntity> stringer1 = o->"codice : "+o.getSerialCode()+"; nome : "+o.getNome()+
                 "; prezzo al pezzo: "+o.getPrezzo()+"; quantità: "+o.getNumero()+"; ";
         return stringer.objectToString(ordineEntity)+dest+" Prodotti: "+stringer1.objectToString(ordineEntity.getProdotti());

@@ -40,10 +40,7 @@ public class RegistrationService {
         cl.initUsername();
         this.clienteRepository.save(cl);
     }
-    /*public void createCommerciante(String nome, String cognome, String email, String password){
-        CommercianteEntity cl = new CommercianteEntity(nome,cognome,email,password);
-        commercianteRepository.save(cl);
-    }*/
+
     private void createCorriere(String nome, String cognome, String email, String password){
         CorriereEntity cl = new CorriereEntity(nome,cognome,email,password);
         cl.initUsername();
@@ -54,10 +51,10 @@ public class RegistrationService {
      * registra un nuovo corriere o cliente
      * se type==CLIENTE allora registra un nuovo cliente
      * se type ==CORRIERE registra un nuovo corriere
-     * @param nome
-     * @param cognome
-     * @param email
-     * @param password
+     * @param nome nome del cliente o corriere
+     * @param cognome cognome cliente o corriere
+     * @param email email cliente o corriere
+     * @param password password ciente o corriere
      * @param type condizione di controllo sul tipo cliente/commerciante
      */
     public void registerClienteCorriere(String nome, String cognome, String email, String password, String type){

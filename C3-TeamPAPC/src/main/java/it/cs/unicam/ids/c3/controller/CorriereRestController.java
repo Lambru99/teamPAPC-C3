@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Controller rest del Corriere
+ */
 @RestController
 @RequestMapping("/corrieri")
 @CrossOrigin(origins = "*")
@@ -44,15 +47,31 @@ public class CorriereRestController {
         return this.gestoreChiamate.getChiamate();
     }
 
+    /**
+     * Permette al corriere di accettare delle chiamate
+     * @param id
+     * @param idChiamata
+     */
     @DeleteMapping("/{id}/accettaChiamata")
     public void accettaChiamata(@PathVariable long id,@RequestParam long idChiamata){
         this.corriereService.accettaChiamata(id,idChiamata);
     }
 
+    /**
+     * Setta l'ordine come in trasporto
+     * @param id
+     * @param idOrdine
+     */
     @PatchMapping("{id}/ordini/ritiraOrdine")
     public void ritiraOrdine(@PathVariable long id,@RequestParam long idOrdine){
         this.corriereService.cambiaStatoOrdine(id,idOrdine,StatoOrdine.IN_TRASPORTO);
     }
+
+    /**
+     * Setta l'ordine come Consegnato
+     * @param id
+     * @param idOrdine
+     */
     @PostMapping("{id}/ordini/consegnaOrdine")
     public void consegnaOrdine(@PathVariable long id,@RequestParam long idOrdine){
         this.corriereService.cambiaStatoOrdine(id,idOrdine,StatoOrdine.CONSEGNATO);

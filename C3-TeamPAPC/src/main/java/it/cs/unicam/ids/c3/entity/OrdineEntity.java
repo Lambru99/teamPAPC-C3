@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
+/**
+ * Gli ordini possono essere effettua da un cliente che intende comprare da un negozio un prodotto. Gli ordini sono, poi, trattati dal commerciante che li prepara e
+ * se richiesto dal cliente li fa spedire da un corriere ad un locker, o li contrassegna come pronti per essere ritirati ed aspette che il cliente li venga a prendere
+ */
 @Entity
 
 @Table(name = "ordini")

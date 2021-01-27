@@ -4,6 +4,10 @@ import javax.persistence.*;
 import java.util.Objects;
 import java.util.Random;
 
+/**
+ * Il prodotto viene inserito dal commercinate in un negozio viene visualizzato da un cliente e viene comprato da esso. Il prodotto è un bene materiale
+ * che viene imballato epreparato dal commerciante insieme agl'altri prodotti acquistati dal cliente e facenti parte di un ordine.
+ */
 @Entity
 
 @Table(name = "prodotti")

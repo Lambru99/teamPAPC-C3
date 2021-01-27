@@ -6,6 +6,9 @@ import it.cs.unicam.ids.c3.service.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Controller rest della registrazione
+ */
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/register")
@@ -15,6 +18,17 @@ public class RegistrationRestController {
     RegistrationService registrationService;
     public RegistrationRestController(){}
 
+    /**
+     * Registrazione del commerciante diversa da quella del cliente e quella de corriere perché associa un negozio al commerciante appena creato
+     * @param nome
+     * @param cognome
+     * @param email
+     * @param password
+     * @param nomeNegozio
+     * @param descrizione
+     * @param indirizzo
+     * @param orario
+     */
     @PostMapping("/registrationCommerciante")
     public void doRegistrationCommerciante(@RequestParam String nome,@RequestParam String cognome,
                                            @RequestParam String email,@RequestParam String password,@RequestParam String nomeNegozio,
@@ -24,6 +38,14 @@ public class RegistrationRestController {
                 new NegozioEntity(nomeNegozio,descrizione,indirizzo,orario));
     }
 
+    /**
+     * Registrazione del cliente e del commerciante
+     * @param nome
+     * @param cognome
+     * @param email
+     * @param password
+     * @param type
+     */
     @PostMapping("/registrationCliCor")
     public void register(@RequestParam String nome, @RequestParam String cognome,
                          @RequestParam String email,@RequestParam String password,@RequestParam String type){

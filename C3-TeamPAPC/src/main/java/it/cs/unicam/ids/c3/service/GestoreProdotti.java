@@ -17,6 +17,11 @@ public class GestoreProdotti {
     public GestoreProdotti() {
     }
 
+    /**
+     * Permette di avere un prodotto dato il suo ID
+     * @param id Id del prodotto da ricercare
+     * @return prodotto che ha come id quello passato per input
+     */
     public ProdottoEntity getProdottoById(long id){
         return this.prodottoRepository.findById(id).orElseThrow(() ->
                 new NullPointerException("prodotto con questo id non esistente"));

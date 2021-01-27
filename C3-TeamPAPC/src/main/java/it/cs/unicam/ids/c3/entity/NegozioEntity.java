@@ -5,6 +5,10 @@ import it.cs.unicam.ids.c3.PuntoRitiro;
 import javax.persistence.*;
 import java.util.*;
 
+/**
+ * Il negozio è di proprietà di un commerciante e contiene dei prodotti, il negozio è il posto virtuale, che come quello fisico, il cliente
+ * utilizzerà per acquistare la merce.
+ */
 @Entity
 
 @Table(name = "negozi")
@@ -21,12 +25,10 @@ public class NegozioEntity implements PuntoRitiro {
     private String orario;
     @OneToMany(cascade = CascadeType.ALL)
     private List<ProdottoEntity> prodotti;
-/*    @OneToMany(cascade = CascadeType.ALL)
-    private List<OrdineEntity> ordini;*/
+
 
     public NegozioEntity() {
         this.prodotti = new ArrayList<>();
-        //this.ordini = new ArrayList<>();
     }
 
     public NegozioEntity(String nome, String descrizione, String indirizzo, String orario) {
@@ -122,9 +124,6 @@ public class NegozioEntity implements PuntoRitiro {
                 '}';
     }
 
-    /*public void addProdotto(Prodotto prodotto){
-        prodotto.setNegozio(this);
-        getProdotti().add(prodotto);
-    }*/
+
 
 }

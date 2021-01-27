@@ -98,7 +98,7 @@ public class ConcreteCreatoreOrdine implements CreatoreOrdine{
         else {
             o.setEmittente(this.emittente);
         }
-        //gestisciProdottoEmittente();
+        gestisciProdottoEmittente();
         if(!this.prodotti.isEmpty()) {
             o.setProdotti(this.prodotti);
             o.calcoloSoldi();

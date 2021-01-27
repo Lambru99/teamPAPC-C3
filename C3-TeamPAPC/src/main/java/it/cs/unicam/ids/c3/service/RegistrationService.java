@@ -10,6 +10,9 @@ import it.cs.unicam.ids.c3.util.MyUserType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * servizio che si occupa di registrate un nuovo utente
+ */
 @Service
 public class RegistrationService {
     @Autowired
@@ -21,7 +24,12 @@ public class RegistrationService {
 
     public RegistrationService(){}
 
-    public void addCommerciante(CommercianteEntity commercianteEntity, NegozioEntity negozioEntity){
+    /**
+     * registra un nuovo commerciante
+     * @param commercianteEntity commerciante da registrare
+     * @param negozioEntity negozio associato al commerciante
+     */
+    public void registerCommerciante(CommercianteEntity commercianteEntity, NegozioEntity negozioEntity){
         commercianteEntity.initUsername();
         commercianteEntity.setNegozio(negozioEntity);
         this.commercianteRepository.save(commercianteEntity);
@@ -42,7 +50,17 @@ public class RegistrationService {
         this.corriereService.updateCorriere(cl);
     }
 
-    public void register(String nome, String cognome, String email, String password,String type){
+    /**
+     * registra un nuovo corriere o cliente
+     * se type==CLIENTE allora registra un nuovo cliente
+     * se type ==CORRIERE registra un nuovo corriere
+     * @param nome
+     * @param cognome
+     * @param email
+     * @param password
+     * @param type condizione di controllo sul tipo cliente/commerciante
+     */
+    public void registerClienteCorriere(String nome, String cognome, String email, String password, String type){
         MyUserType u = MyUserType.valueOf(type.toUpperCase());
         switch (u) {
             case CLIENTE: createCliente(nome,cognome,email,password);break;

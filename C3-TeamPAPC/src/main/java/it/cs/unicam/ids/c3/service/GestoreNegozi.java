@@ -11,6 +11,7 @@ import java.util.List;
 /**
  * servizio che si occupa di gestire i negozi in alcune operazioni,poiché
  * la responsabilità di gestire un negozio è del commerciante
+ * questo servizio verrà utilizzato da altri servizi
  */
 @Service
 public class GestoreNegozi {
@@ -27,6 +28,11 @@ public class GestoreNegozi {
                 .orElseThrow(()->new NullPointerException("negozio con questo id inesistente"));
     }
 
+    /**
+     * elimina un prodotto da un negozio
+     * @param idNegozio id negozio su cui eliminare un prodotto
+     * @param idProdotto id del prodotto da eliminare
+     */
     public void deleteProdotto(long idNegozio,long idProdotto){
         NegozioEntity n =getNegozioById(idNegozio);
         if(n.getProdotti().stream().anyMatch(p->p.getId()==idProdotto)) {

@@ -10,6 +10,9 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+/**
+ * servizio che permette di gestire le operazioni di un cliente
+ */
 @Service
 public class ClienteService {
     @Autowired
@@ -28,18 +31,24 @@ public class ClienteService {
         this.gestoreOrdini.clearCreatore();
     }
 
-    /*public void ritiraOrdine(long id,long idOrdine){
-        OrdineEntity o = this.gestoreOrdini.getOrdineById(idOrdine);
-        if(getOrdiniCliente(id,or ->or.getStatoOrdine()==StatoOrdine.CONSEGNATO||
-                or.getStatoOrdine()==StatoOrdine.RITIRO_NEGOZIO).contains(o))
-            this.gestoreOrdini.cambiaStatoOrdine(idOrdine,StatoOrdine.COMPLETATO);
-    }*/
-    public void cambiaStatoOrdine(long id,long idOrdine,StatoOrdine stato){
+    /**
+     * permette al cliente di settare un ordine come completato poiché ritirato
+     * @param id del cliente
+     * @param idOrdine dell'ordine da ritirare
+     */
+    public void cambiaStatoOrdine(long id,long idOrdine){
         if (getClienteById(id).getOrdini().stream().anyMatch(o->o.getId()==idOrdine))
-            this.gestoreOrdini.cambiaStatoOrdine(idOrdine,stato);
+            this.gestoreOrdini.cambiaStatoOrdine(idOrdine,StatoOrdine.COMPLETATO);
         else throw new NullPointerException("nessun ordine con questo id");
     }
 
+    /**
+     * usando il servizio associato agli ordini, permette ad un cliente di ottenere le informazioni di un ordine
+     * associato ad un id
+     * @param id del cliente
+     * @param idOrdine dell'ordine da cui ottenere le informazioni
+     * @return le informazioni dell'ordine
+     */
     public String getInfoOrdine(long id,long idOrdine){
         if(getOrdiniCliente(id,o->true).stream().noneMatch(o->o.getId()==idOrdine))return null;
         else return this.gestoreOrdini.getInformazioni(idOrdine);
@@ -62,6 +71,11 @@ public class ClienteService {
         return this.gestoreOrdini.setProdottoOrdine(idProdotto,number);
     }
 
+    /**
+     * crea ed effettua un ordine da porte di un cliente
+     * @param id del cliente
+     * @return l'ordine effettuato
+     */
     public OrdineEntity addOrdineToCliente(long id) {
         if (this.clienteRepository.findAll().stream().noneMatch(clienteEntity -> clienteEntity.getId() == id))
             throw new NullPointerException("cliente con questo id inesistente");

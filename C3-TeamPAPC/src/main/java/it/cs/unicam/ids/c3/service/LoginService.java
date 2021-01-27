@@ -8,6 +8,9 @@ import it.cs.unicam.ids.c3.util.MyUserType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * servizio che si occupa di verificare l'accesso per un utente già registrato nel sistema
+ */
 @Service
 public class LoginService {
     @Autowired
@@ -28,6 +31,7 @@ public class LoginService {
                     .orElseThrow(NullPointerException::new).getId();
         else return 0;
     }
+
     private long getCorriereId(String email,String password){
         if (verifyPresenceOfCorriere(email, password))
             return this.corriereRepository.findAll().stream()
@@ -47,6 +51,13 @@ public class LoginService {
     }
 
 
+    /**
+     * permette di ottenere un id corretto dell'utente di tipo aspettato
+     * @param userType tipo di utente aspettato
+     * @param email email dell'utente
+     * @param password password dell'utente
+     * @return id dell'utente verificato
+     */
     public long getUserId(String userType,String email,String password){
         long id=0;
         MyUserType u = MyUserType.valueOf(userType.toUpperCase());

@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ *
+ */
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/clienti")
@@ -86,6 +89,6 @@ public class ClienteRestController{
 
     @PatchMapping("/{id}/ritiraOrdine/{idOrdine}")
     public void ritiraOrdine(@PathVariable long id,@PathVariable long idOrdine){
-        this.clienteService.cambiaStatoOrdine(id,idOrdine,StatoOrdine.COMPLETATO);
+        this.clienteService.cambiaStatoOrdine(id,idOrdine);
     }
 }

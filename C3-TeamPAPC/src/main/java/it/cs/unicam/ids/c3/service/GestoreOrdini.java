@@ -40,6 +40,12 @@ public class GestoreOrdini {
         return this.ordineRepository.findById(id).orElseThrow(NullPointerException::new);
     }
 
+    /**
+     * filtra gli ordini da una lista di ordini posseduta da qualcuno(es. Cliente,Commerciante..)
+     * @param ordiniPosseduti lista degli ordini di un ente che deve essere filtrata
+     * @param filtro filtro che si applica alla lista
+     * @return lista deglio ordini filtrati secondo un predicato
+     */
     public List<OrdineEntity> filtraOrdini(List<OrdineEntity> ordiniPosseduti, Predicate<OrdineEntity> filtro){
         return ordiniPosseduti.stream().filter(filtro).collect(Collectors.toList());
     }
@@ -56,6 +62,13 @@ public class GestoreOrdini {
         this.creatoreOrdine.setDestinazione(this.gestoreLockers.getLockerById(idDestinazione));
         return this.creatoreOrdine.getDestinazione();
     }
+
+    /**
+     * setta il prodotto da aggiungere al creatore con una certa quantità
+     * @param idProdotto id del prodotto da aggiungere
+     * @param numero numero del prodotto da aggiungere
+     * @return prodotto aggiunto
+     */
     public ProdottoEntity setProdottoOrdine(long idProdotto,int numero){
         if(this.creatoreOrdine.getEmittente().getProdotti().stream().noneMatch(prodottoEntity -> prodottoEntity.getId()==idProdotto))
             throw new NullPointerException("nessun Prodotto con questo Id");
@@ -72,12 +85,20 @@ public class GestoreOrdini {
         return this.creatoreOrdine.creaOrdine();
     }
 
+    /**
+     * Una volta creato un ordine, vengono azzerati i parametri del creatore
+     */
     public void clearCreatore(){
         this.creatoreOrdine.setEmittente(null);
         this.creatoreOrdine.setDestinazione(null);
         this.creatoreOrdine.getProdotti().clear();
     }
 
+    /**
+     * viene usato per restituire le informazioni dettagliate di un ordine sotto forma di stringa
+     * @param id id dell'ordine a cui si vuole accedere alle informazioni
+     * @return le informazioni dell'ordine selezionato
+     */
     public String getInformazioni(long id){
         String dest="";
         OrdineEntity ordineEntity = getOrdineById(id);
@@ -93,6 +114,11 @@ public class GestoreOrdini {
         return stringer.objectToString(ordineEntity)+dest+" Prodotti: "+stringer1.objectToString(ordineEntity.getProdotti());
     }
 
+    /**
+     * cambia lo stato di un ordine
+     * @param idOrdine ordine a cui si vuole cambiare stato
+     * @param statoDaSettare lo stata che si vuole settare
+     */
     public void cambiaStatoOrdine(long idOrdine,StatoOrdine statoDaSettare) {
         OrdineEntity ordineEntity =getOrdineById(idOrdine);
         ordineEntity.setStatoOrdine(statoDaSettare);

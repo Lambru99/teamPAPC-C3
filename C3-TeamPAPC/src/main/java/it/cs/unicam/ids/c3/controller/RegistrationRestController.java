@@ -20,13 +20,13 @@ public class RegistrationRestController {
                                            @RequestParam String email,@RequestParam String password,@RequestParam String nomeNegozio,
                                            @RequestParam String descrizione,@RequestParam String indirizzo,
                                            @RequestParam String orario ){
-        this.registrationService.addCommerciante(new CommercianteEntity(nome,cognome,email,password),
+        this.registrationService.registerCommerciante(new CommercianteEntity(nome,cognome,email,password),
                 new NegozioEntity(nomeNegozio,descrizione,indirizzo,orario));
     }
 
     @PostMapping("/registrationCliCor")
     public void register(@RequestParam String nome, @RequestParam String cognome,
                          @RequestParam String email,@RequestParam String password,@RequestParam String type){
-        this.registrationService.register(nome,cognome,email,password,type);
+        this.registrationService.registerClienteCorriere(nome,cognome,email,password,type);
     }
 }

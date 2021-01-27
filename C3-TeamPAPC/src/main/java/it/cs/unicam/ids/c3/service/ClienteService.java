@@ -55,6 +55,12 @@ public class ClienteService {
         else return this.gestoreOrdini.getInformazioni(idOrdine);
     }
 
+    /**
+     * Metodo che permette di avere tutti gli ordini che un cliente ha eseguito
+     * @param id id del cliente
+     * @param predicate filtro da applicare alla lista
+     * @return ordini esegiuti dal cliente
+     */
     public List<OrdineEntity> getOrdiniCliente(long id, Predicate<OrdineEntity> predicate){
         return this.gestoreOrdini.filtraOrdini(getClienteById(id).getOrdini(),predicate);
     }
@@ -88,6 +94,11 @@ public class ClienteService {
         return o;
     }
 
+    /**
+     *  Permette di risalire ad un cliente tramite un Id
+     * @param id id del cliente da ricercare
+     * @return Il cliente con l'id dato in input
+     */
     public ClienteEntity getClienteById(long id){
         if(this.clienteRepository.findAll().stream().noneMatch(clienteEntity -> clienteEntity.getId()==id))throw
                 new NullPointerException("nessun Cliente con questo Id");

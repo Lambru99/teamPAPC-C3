@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+
+/**
+ * Questo oggetto è uno dei tre attori del programma, il corriere ha il ruolo di transportare gli ordini fatti dal cliente sotto chiamata del commerciante,
+ * il corriere deve comunicare con il sistema quando il pacco è stato ritirato dal negozioe quando esso ha raggiunto destinazione
+ */
 @Entity
 
 @Table(name = "corrieri")

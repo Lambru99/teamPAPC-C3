@@ -26,6 +26,11 @@ public class GestoreLockers {
         return this.lockerRepository.findAll();
     }
 
+    /**
+     * Permette di avere un locker dato il suo ID
+     * @param id Id del locker da ricercare
+     * @return locker che ha come id quello passato per input
+     */
     public LockerEntity getLockerById(long id){
         return this.lockerRepository.findAll().stream().filter(n -> n.getId()==id).findFirst()
                 .orElseThrow(()->new NullPointerException("loker con questo id inesistente"));

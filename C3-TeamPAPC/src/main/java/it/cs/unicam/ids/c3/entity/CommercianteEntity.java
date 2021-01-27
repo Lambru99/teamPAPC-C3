@@ -2,6 +2,11 @@ package it.cs.unicam.ids.c3.entity;
 
 import javax.persistence.*;
 
+/**
+ * Questo oggetto è uno dei tre attori del programma, il commerciante ha il compito di aggiungere il proprio negozio e propri prodotti nella piattaforma al fine di
+ * poterli farli acquistare dal cliente. Una volte che proprio prodotto è stato acquistato il commerciante dovrà gestire l'ordine che ne deriva e, se necessario, chiamare un
+ * corriere che porti l'ordine al locker scelto dal cliente.
+ */
 @Entity
 
 @Table(name = "commercianti")

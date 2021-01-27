@@ -19,5 +19,4 @@ public interface CreatoreOrdine {
     ProdottoEntity getProdottoBySerialCode(long code);
     OrdineEntity creaOrdine();
     NegozioEntity getEmittente();
-/*    void gestisciProdottoEmittente();*/
 }

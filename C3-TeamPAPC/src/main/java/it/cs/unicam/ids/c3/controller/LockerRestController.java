@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Controllere rest del Locker
+ */
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/lockers")

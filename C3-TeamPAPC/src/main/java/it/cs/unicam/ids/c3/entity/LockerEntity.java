@@ -7,6 +7,11 @@ import it.cs.unicam.ids.c3.PuntoRitiro;
 import javax.persistence.*;
 import java.util.Objects;
 
+/**
+ * Il locker è il mezzo ceh un cliente può scegliere per recupare la propria merce, il comune comunica, dopo l'installazione di un nuovo locker, i punti di ritiro che
+ * verrano creati in automatico dal sistema.
+ * Il locker ha un meccanismo di sblocco che funziona tramite codice univoco, il cliente sarà fornito del codice e dovrà inserirlo nel locker per ritira il suo pacco
+ */
 @Entity
 
 @Table(name = "lockers")

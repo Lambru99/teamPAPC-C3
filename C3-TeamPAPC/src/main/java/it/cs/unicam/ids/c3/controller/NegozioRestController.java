@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Controller rest del negozio
+ */
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/negozi")
@@ -38,6 +41,11 @@ public class NegozioRestController {
         return this.gestoreNegozi.getNegozioById(id).getProdotti().stream().filter(prodotto -> prodotto.getId()==idProdotto).findFirst().orElse(null);
     }
 
+    /**
+     * Permette di aggiungere un nuovo prodotto al negozio
+     * @param id
+     * @param prodotto
+     */
     @PostMapping("/negozio/{id}")
     public void addNewProdotto(@PathVariable long id,@RequestBody ProdottoEntity prodotto){
         NegozioEntity n = this.gestoreNegozi.getNegozioById(id);

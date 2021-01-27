@@ -4,6 +4,10 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Questo oggetto è uno dei tre attori del programma, il cliente ha il compito di scegliere un negozio da cui acquistare, un prodotto da acquistare
+ * e attendere che il prodotto sia pronto da ritirare. Esso può scegliere due punti di ritiro quali : Ritirare al negozio o ritirare in locker.
+ */
 @Entity
 
 @Table(name = "clienti")
@@ -53,10 +57,6 @@ public class ClienteEntity {
     public long getId() {
         return id;
     }
-
-    /*public void setId(long id) {
-        this.id = id;
-    }*/
 
     public String getEmail() {
         return email;

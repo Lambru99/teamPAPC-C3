@@ -112,8 +112,8 @@ public class CommercianteService {
 
     /**
      * permette ad un commerciante di effettuare una chiamata per un certo ordine
-     * @param id
-     * @param idOrdine
+     * @param id id del commerciante che vuole fare una chiamata
+     * @param idOrdine id dell'ordine su cui fare la chiamata
      */
     public void effettuaChiamata(long id,long idOrdine){
         CommercianteEntity commerciante = getCommercianteById(id);

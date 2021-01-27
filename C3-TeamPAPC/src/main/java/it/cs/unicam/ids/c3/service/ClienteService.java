@@ -37,9 +37,10 @@ public class ClienteService {
      * @param idOrdine dell'ordine da ritirare
      */
     public void cambiaStatoOrdine(long id,long idOrdine){
-        if (getClienteById(id).getOrdini().stream().anyMatch(o->o.getId()==idOrdine))
+        if (getOrdiniCliente(id,o->o.getStatoOrdine()==StatoOrdine.CONSEGNATO||
+                o.getStatoOrdine()==StatoOrdine.RITIRO_NEGOZIO).stream().anyMatch(o->o.getId()==idOrdine))
             this.gestoreOrdini.cambiaStatoOrdine(idOrdine,StatoOrdine.COMPLETATO);
-        else throw new NullPointerException("nessun ordine con questo id");
+        else throw new NullPointerException("nessun ordine con questo id ritirabile");
     }
 
     /**

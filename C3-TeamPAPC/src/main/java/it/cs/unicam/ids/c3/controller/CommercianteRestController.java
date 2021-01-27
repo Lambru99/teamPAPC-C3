@@ -23,7 +23,7 @@ public class CommercianteRestController {
     }
     @PatchMapping("/{id}/ordini/ritiroInNegozio")
     public void setOrdineRitiroInNegozio(@PathVariable long id,@RequestParam long idOrdine){
-        this.commercianteService.cambiaStatoOrdine(id,idOrdine,StatoOrdine.RITIRO_NEGOZIO);
+        this.commercianteService.cambiaStatoOrdine(id,idOrdine);
     }
 
     @GetMapping("/{id}/negozio")

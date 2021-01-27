@@ -65,9 +65,20 @@ public class CorriereService {
      * @param stato stato da settare
      */
     public void cambiaStatoOrdine(long id,long idOrdine,StatoOrdine stato){
-        if (getCorriereById(id).getOrdini().stream().anyMatch(o->o.getId()==idOrdine))
-            this.gestoreOrdini.cambiaStatoOrdine(idOrdine,stato);
-        else throw new NullPointerException("nessun ordine con questo id");
+        if(stato.equals(StatoOrdine.IN_TRASPORTO)) controlloPerRitiro(id,idOrdine);
+        if (stato.equals(StatoOrdine.CONSEGNATO)) controlloPerConsegna(id,idOrdine);
+    }
+
+    private void controlloPerRitiro(long id, long idOrdine){
+        if (getOrdini(id,o->o.getStatoOrdine()==StatoOrdine.ESEGUITO).stream().anyMatch(o->o.getId()==idOrdine))
+            this.gestoreOrdini.cambiaStatoOrdine(idOrdine,StatoOrdine.IN_TRASPORTO);
+        else throw new NullPointerException("nessun ordine con questo id o pronto per essere ritirato");
+    }
+
+    private void controlloPerConsegna(long id, long idOrdine){
+        if (getOrdini(id,o->o.getStatoOrdine()==StatoOrdine.IN_TRASPORTO).stream().anyMatch(o->o.getId()==idOrdine))
+            this.gestoreOrdini.cambiaStatoOrdine(idOrdine,StatoOrdine.CONSEGNATO);
+        else throw new NullPointerException("nessun ordine con questo id o pronto per essere consegnato");
     }
 
     public CorriereEntity getCorriereById(long id){

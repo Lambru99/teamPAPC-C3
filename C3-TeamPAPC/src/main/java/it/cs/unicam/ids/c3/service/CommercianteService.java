@@ -31,15 +31,16 @@ public class CommercianteService {
     }
 
     /**
-     * permette di cambiare lo stato dell'ordine da parte di un commerciante usando il servizio GestoreOrdini
+     * permette di cambiare lo stato dell'ordine da parte di un commerciante
+     * in Ritiro in Negozio  usando il servizio GestoreOrdini
      * @param id del commerciante
      * @param idOrdine dell'ordine a cui cambiare stato
-     * @param stato stato da settare
      */
-    public void cambiaStatoOrdine(long id, long idOrdine, StatoOrdine stato){
-        if (getOrdiniCommerciante(id,o->true).stream().anyMatch(o->o.getId()==idOrdine))
-            this.gestoreOrdini.cambiaStatoOrdine(idOrdine,stato);
-        else throw new NullPointerException("nessun ordine con questo id");
+    public void cambiaStatoOrdine(long id, long idOrdine){
+        if (getOrdiniCommerciante(id,o->o.getStatoOrdine()==StatoOrdine.ESEGUITO&&o.getDestinazione()==null).stream()
+                .anyMatch(o->o.getId()==idOrdine))
+            this.gestoreOrdini.cambiaStatoOrdine(idOrdine,StatoOrdine.RITIRO_NEGOZIO);
+        else throw new NullPointerException("nessun ordine con questo id o pronto per consegna al negozio");
     }
 
     /**

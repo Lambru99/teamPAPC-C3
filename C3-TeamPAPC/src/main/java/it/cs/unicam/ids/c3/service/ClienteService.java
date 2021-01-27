@@ -88,9 +88,9 @@ public class ClienteService {
             throw new NullPointerException("cliente con questo id inesistente");
         ClienteEntity cliente = getClienteById(id);
         OrdineEntity o = this.gestoreOrdini.creaOrdine();
+        this.gestoreOrdini.clearCreatore();
         cliente.getOrdini().add(o);
         this.clienteRepository.save(cliente);
-        this.gestoreOrdini.clearCreatore();
         return o;
     }
 

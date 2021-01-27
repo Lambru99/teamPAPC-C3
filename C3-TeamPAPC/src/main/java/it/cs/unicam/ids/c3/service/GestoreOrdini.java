@@ -82,6 +82,14 @@ public class GestoreOrdini {
     }
 
     public OrdineEntity creaOrdine(){
+        this.gestoreNegozi.addOrUpdateNegozio(this.creatoreOrdine.getEmittente());
+        this.creatoreOrdine.setEmittente(this.gestoreNegozi
+                .getNegozioById(this.creatoreOrdine.getEmittente().getId()));
+        if(this.creatoreOrdine.getDestinazione()!=null){
+            this.gestoreLockers.addOrUpdatesLocker(this.creatoreOrdine.getDestinazione());
+            this.creatoreOrdine.setDestinazione(this.gestoreLockers
+                    .getLockerById(this.creatoreOrdine.getDestinazione().getId()));
+        }
         return this.creatoreOrdine.creaOrdine();
     }
 

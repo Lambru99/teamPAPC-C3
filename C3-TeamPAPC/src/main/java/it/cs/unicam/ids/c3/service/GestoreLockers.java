@@ -40,4 +40,9 @@ public class GestoreLockers {
         return gestoreOrdini.filtraOrdini(this.gestoreOrdini.getOrdini(),o->
                 o.getDestinazione().getId()==id&&o.getStatoOrdine()== StatoOrdine.CONSEGNATO);
     }
+
+    public void addOrUpdatesLocker(LockerEntity locker){
+        this.lockerRepository.save(locker);
+    }
+
 }

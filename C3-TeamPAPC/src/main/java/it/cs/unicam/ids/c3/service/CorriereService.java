@@ -14,13 +14,13 @@ import java.util.function.Predicate;
  * servizio che permette di gestire le operazioni di un corriere
  */
 @Service
-public class CorriereService {
+public class CorriereService implements CorriereServiceInterface{
     @Autowired
     private CorriereRepository corriereRepository;
     @Autowired
-    private GestoreChiamate gestoreChiamate;
+    private GestoreChiamateInterface gestoreChiamate;
     @Autowired
-    private GestoreOrdini gestoreOrdini;
+    private GestoreOrdiniInterface gestoreOrdini;
 
     public CorriereService() {
     }
@@ -29,6 +29,7 @@ public class CorriereService {
      * permette di visualizzare tutte le chimate disponibili
      * @return chiamate disponibili
      */
+    @Override
     public List<ChiamataEntity> getChiamate(){
         return this.gestoreChiamate.getChiamate();
     }
@@ -38,12 +39,13 @@ public class CorriereService {
      * @param id id del corriere che deve accettare la chiamata
      * @param idChiamata id della chiamata da accettare
      */
+    @Override
     public void accettaChiamata(long id, long idChiamata){
         CorriereEntity corriere = getCorriereById(id);
         ChiamataEntity chiamata = this.gestoreChiamate.getChiamataById(idChiamata);
         corriere.getOrdini().add(chiamata.getOrdine());
         this.gestoreChiamate.deleteChiamataById(idChiamata);
-        updateCorriere(corriere);
+        this.corriereRepository.save(corriere);
     }
 
     /**
@@ -53,6 +55,7 @@ public class CorriereService {
      * @param idOrdine dell'ordine da cui ottenere le informazioni
      * @return le informazioni dell'ordine
      */
+    @Override
     public String getInfoOrdine(long id,long idOrdine){
         if(getOrdini(id,ordineEntity -> true).stream().noneMatch(o->o.getId()==idOrdine))return null;
         else return this.gestoreOrdini.getInformazioni(idOrdine);
@@ -64,6 +67,7 @@ public class CorriereService {
      * @param idOrdine dell'ordine a cui cambiare stato
      * @param stato stato da settare
      */
+    @Override
     public void cambiaStatoOrdine(long id,long idOrdine,StatoOrdine stato){
         if(stato.equals(StatoOrdine.IN_TRASPORTO)) controlloPerRitiro(id,idOrdine);
         if (stato.equals(StatoOrdine.CONSEGNATO)) controlloPerConsegna(id,idOrdine);
@@ -81,19 +85,18 @@ public class CorriereService {
         else throw new NullPointerException("nessun ordine con questo id o pronto per essere consegnato");
     }
 
+    @Override
     public CorriereEntity getCorriereById(long id){
         return this.corriereRepository.findById(id)
                 .orElseThrow(() -> new NullPointerException("corriere con questo id inesistente"));
     }
 
+    @Override
     public List<CorriereEntity> getCorrieri(){
         return this.corriereRepository.findAll();
     }
 
-    public void updateCorriere(CorriereEntity corriere){
-        this.corriereRepository.save(corriere);
-    }
-
+    @Override
     public List<OrdineEntity> getOrdini(long id, Predicate<OrdineEntity> predicate){
         return this.gestoreOrdini.filtraOrdini(getCorriereById(id).getOrdini(),predicate);
     }

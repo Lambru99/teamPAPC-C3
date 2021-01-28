@@ -13,16 +13,20 @@ import java.util.stream.Collectors;
  * servizio che permette di gestire le operazioni di un commerciante
  */
 @Service
-public class CommercianteService {
+public class CommercianteService implements CommercianteServiceInterface{
     @Autowired
     private CommercianteRepository commercianteRepository;
     @Autowired
-    private GestoreOrdini gestoreOrdini;
+    private GestoreOrdiniInterface gestoreOrdini;
     @Autowired
-    private GestoreChiamate gestoreChiamate;
+    private GestoreChiamateInterface gestoreChiamate;
     @Autowired
-    private GestoreNegozi gestoreNegozi;
+    private GestoreNegoziInterface gestoreNegozi;
 
+    public CommercianteService() {
+    }
+
+    @Override
     public CommercianteEntity getCommercianteById(long id){
         if(this.commercianteRepository.findAll().stream().noneMatch(commercianteEntity -> commercianteEntity.getId()==id))throw
                 new NullPointerException("nessun Commerciante con questo Id");
@@ -36,6 +40,7 @@ public class CommercianteService {
      * @param id del commerciante
      * @param idOrdine dell'ordine a cui cambiare stato
      */
+    @Override
     public void cambiaStatoOrdine(long id, long idOrdine){
         if (getOrdiniCommerciante(id,o->o.getStatoOrdine()==StatoOrdine.ESEGUITO&&o.getDestinazione()==null).stream()
                 .anyMatch(o->o.getId()==idOrdine))
@@ -50,7 +55,8 @@ public class CommercianteService {
      * @param idOrdine dell'ordine da cui ottenere le informazioni
      * @return le informazioni dell'ordine
      */
-    public String getInfoOrdine(long id,long idOrdine){
+    @Override
+    public String getInfoOrdine(long id, long idOrdine){
         if(getOrdiniCommerciante(id,ordineEntity -> true).stream().noneMatch(o->o.getId()==idOrdine))return null;
         else return this.gestoreOrdini.getInformazioni(idOrdine);
     }
@@ -66,7 +72,8 @@ public class CommercianteService {
      * @param aggiunta boolean di controllo per l'aggiunta o rimozione.
      * @return prodotto aggiunto.
      */
-    public ProdottoEntity modificaNumeroProdotto(long idCommerciante,long idProdotto,int numero,boolean aggiunta){
+    @Override
+    public ProdottoEntity modificaNumeroProdotto(long idCommerciante, long idProdotto, int numero, boolean aggiunta){
         Predicate<ProdottoEntity> predicate = p ->p.getId()==idProdotto;
         ProdottoEntity p = getProdottiNegozio(idCommerciante).stream().filter(predicate).findFirst()
                 .orElseThrow(()->new NullPointerException("prodotto con questo Id inesistente"));
@@ -84,7 +91,8 @@ public class CommercianteService {
      * @param idCommerciante id del commerciante
      * @param prodotto prodotto che si vuol aggiungere
      */
-    public void aggiungiProdotto(long idCommerciante,ProdottoEntity prodotto){
+    @Override
+    public void aggiungiProdotto(long idCommerciante, ProdottoEntity prodotto){
         NegozioEntity n = this.getCommercianteById(idCommerciante).getNegozio();
         n.getProdotti().add(prodotto);
         this.gestoreNegozi.addOrUpdateNegozio(n);
@@ -95,16 +103,19 @@ public class CommercianteService {
      * @param idCommerciante id commerciante
      * @param idProdotto id porodotto da rimuovere
      */
-    public void deleteProdotto(long idCommerciante,long idProdotto){
+    @Override
+    public void deleteProdotto(long idCommerciante, long idProdotto){
         NegozioEntity n = getCommercianteById(idCommerciante).getNegozio();
         this.gestoreNegozi.deleteProdotto(n.getId(),idProdotto);
     }
 
+    @Override
     public List<ProdottoEntity> getProdottiNegozio(long id){
         return getCommercianteById(id).getNegozio().getProdotti();
     }
 
-    public List<OrdineEntity> getOrdiniCommerciante(long id,Predicate<OrdineEntity> predicate){
+    @Override
+    public List<OrdineEntity> getOrdiniCommerciante(long id, Predicate<OrdineEntity> predicate){
         return this.gestoreOrdini.filtraOrdini(this.gestoreOrdini.getOrdini().stream().filter(ordineEntity ->
                 ordineEntity.getEmittente().getId()==getCommercianteById(id).getNegozio().getId())
                         .collect(Collectors.toList()),predicate);
@@ -115,7 +126,8 @@ public class CommercianteService {
      * @param id id del commerciante che vuole fare una chiamata
      * @param idOrdine id dell'ordine su cui fare la chiamata
      */
-    public void effettuaChiamata(long id,long idOrdine){
+    @Override
+    public void effettuaChiamata(long id, long idOrdine){
         CommercianteEntity commerciante = getCommercianteById(id);
         OrdineEntity ordine = getOrdiniCommerciante(id, o -> o.getStatoOrdine()==StatoOrdine.ESEGUITO).stream().filter(o -> o.getId()==idOrdine)
                 .findFirst().orElseThrow(()-> new NullPointerException("nessun ordine valido in questo negozio con questi parametri"));

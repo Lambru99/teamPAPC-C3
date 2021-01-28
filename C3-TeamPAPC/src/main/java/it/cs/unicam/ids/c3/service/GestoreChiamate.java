@@ -16,17 +16,19 @@ import java.util.List;
  */
 
 @Service
-public class GestoreChiamate {
+public class GestoreChiamate implements GestoreChiamateInterface {
     @Autowired
     private ChiamataRepository chiamataRepository;
 
     public GestoreChiamate() {
     }
 
+    @Override
     public List<ChiamataEntity> getChiamate(){
         return this.chiamataRepository.findAll();
     }
 
+    @Override
     public ChiamataEntity getChiamataById(long idChiamata){
         return this.chiamataRepository.findById(idChiamata)
                 .orElseThrow(() -> new NullPointerException("chiamata con questo id inesistente"));
@@ -36,6 +38,7 @@ public class GestoreChiamate {
      * permette di effettuare una chiamata da chi utilizza questo servizio
      * @param chiamata
      */
+    @Override
     public void addChiamata(ChiamataEntity chiamata){
         this.chiamataRepository.save(chiamata);
     }
@@ -46,6 +49,7 @@ public class GestoreChiamate {
      * @param ordineContenente ordine che è contenuto nella chiamata
      * @return chiamata creata
      */
+    @Override
     public ChiamataEntity createChiamata(NegozioEntity negozioChiamante, OrdineEntity ordineContenente){
         if(ordineContenente.getStatoOrdine()== StatoOrdine.ESEGUITO) {
             ChiamataEntity chiamata = new ChiamataEntity();
@@ -56,6 +60,7 @@ public class GestoreChiamate {
         +StatoOrdine.ESEGUITO.toString());
     }
 
+    @Override
     public void deleteChiamataById(long id) {
         this.chiamataRepository.deleteById(id);
     }

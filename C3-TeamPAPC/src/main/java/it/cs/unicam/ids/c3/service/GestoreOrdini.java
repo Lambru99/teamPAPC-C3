@@ -19,25 +19,27 @@ import java.util.stream.Collectors;
  * servizio che viene utilizzato da altri servizi
  */
 @Service
-public class GestoreOrdini {
+public class GestoreOrdini implements GestoreOrdiniInterface{
     @Autowired
     private OrdineRepository ordineRepository;
     @Autowired
-    private GestoreNegozi gestoreNegozi;
+    private GestoreNegoziInterface gestoreNegozi;
     @Autowired
-    private GestoreLockers gestoreLockers;
+    private GestoreLockersInterface gestoreLockers;
     private CreatoreOrdine creatoreOrdine;
 
     public GestoreOrdini() {
         this.creatoreOrdine = new ConcreteCreatoreOrdine();
     }
 
-    public CreatoreOrdine getCreatoreOrdine() {
-        return creatoreOrdine;
-    }
-
+    @Override
     public OrdineEntity getOrdineById(long id){
         return this.ordineRepository.findById(id).orElseThrow(NullPointerException::new);
+    }
+
+    @Override
+    public CreatoreOrdine getCreatore(){
+        return this.creatoreOrdine;
     }
 
     /**
@@ -46,18 +48,22 @@ public class GestoreOrdini {
      * @param filtro filtro che si applica alla lista
      * @return lista deglio ordini filtrati secondo un predicato
      */
+    @Override
     public List<OrdineEntity> filtraOrdini(List<OrdineEntity> ordiniPosseduti, Predicate<OrdineEntity> filtro){
         return ordiniPosseduti.stream().filter(filtro).collect(Collectors.toList());
     }
 
+    @Override
     public List<OrdineEntity> getOrdini(){
         return this.ordineRepository.findAll();
     }
 
+    @Override
     public NegozioEntity setEmittenteOrdine(long idEmittente){
         this.creatoreOrdine.setEmittente(this.gestoreNegozi.getNegozioById(idEmittente));
         return this.creatoreOrdine.getEmittente();
     }
+    @Override
     public LockerEntity setDestinazione(long idDestinazione){
         this.creatoreOrdine.setDestinazione(this.gestoreLockers.getLockerById(idDestinazione));
         return this.creatoreOrdine.getDestinazione();
@@ -69,7 +75,8 @@ public class GestoreOrdini {
      * @param numero numero del prodotto da aggiungere
      * @return prodotto aggiunto
      */
-    public ProdottoEntity setProdottoOrdine(long idProdotto,int numero){
+    @Override
+    public ProdottoEntity setProdottoOrdine(long idProdotto, int numero){
         if(this.creatoreOrdine.getEmittente().getProdotti().stream().noneMatch(prodottoEntity -> prodottoEntity.getId()==idProdotto))
             throw new NullPointerException("nessun Prodotto con questo Id");
         ProdottoEntity prodotto = this.creatoreOrdine.getEmittente().getProdotti().stream().filter(p->p.getId()==idProdotto)
@@ -81,6 +88,7 @@ public class GestoreOrdini {
                 prodottoEntity.getSerialCode()==prodotto.getSerialCode()).findFirst().orElseThrow(NullPointerException::new);
     }
 
+    @Override
     public OrdineEntity creaOrdine(){
         this.gestoreNegozi.addOrUpdateNegozio(this.creatoreOrdine.getEmittente());
         this.creatoreOrdine.setEmittente(this.gestoreNegozi
@@ -96,6 +104,7 @@ public class GestoreOrdini {
     /**
      * Una volta creato un ordine, vengono azzerati i parametri del creatore
      */
+    @Override
     public void clearCreatore(){
         this.creatoreOrdine.setEmittente(null);
         this.creatoreOrdine.setDestinazione(null);
@@ -107,6 +116,7 @@ public class GestoreOrdini {
      * @param id id dell'ordine a cui si vuole accedere alle informazioni
      * @return le informazioni dell'ordine selezionato
      */
+    @Override
     public String getInformazioni(long id){
         String dest="";
         OrdineEntity ordineEntity = getOrdineById(id);
@@ -127,7 +137,8 @@ public class GestoreOrdini {
      * @param idOrdine ordine a cui si vuole cambiare stato
      * @param statoDaSettare lo stata che si vuole settare
      */
-    public void cambiaStatoOrdine(long idOrdine,StatoOrdine statoDaSettare) {
+    @Override
+    public void cambiaStatoOrdine(long idOrdine, StatoOrdine statoDaSettare) {
         OrdineEntity ordineEntity =getOrdineById(idOrdine);
         ordineEntity.setStatoOrdine(statoDaSettare);
         this.ordineRepository.save(ordineEntity);

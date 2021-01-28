@@ -1,6 +1,6 @@
 package it.cs.unicam.ids.c3.controller;
 
-import it.cs.unicam.ids.c3.service.LoginService;
+import it.cs.unicam.ids.c3.service.LoginServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/login")
 public class LoginRestController {
     @Autowired
-    private LoginService loginService;
+    private LoginServiceInterface loginService;
 
     public LoginRestController() {
     }

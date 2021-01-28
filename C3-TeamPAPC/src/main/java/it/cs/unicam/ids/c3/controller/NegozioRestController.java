@@ -2,7 +2,7 @@ package it.cs.unicam.ids.c3.controller;
 
 import it.cs.unicam.ids.c3.entity.NegozioEntity;
 import it.cs.unicam.ids.c3.entity.ProdottoEntity;
-import it.cs.unicam.ids.c3.service.GestoreNegozi;
+import it.cs.unicam.ids.c3.service.GestoreNegoziInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +16,7 @@ import java.util.List;
 @RequestMapping("/negozi")
 public class NegozioRestController {
     @Autowired
-    private GestoreNegozi gestoreNegozi;
+    private GestoreNegoziInterface gestoreNegozi;
 
     public NegozioRestController() {
     }

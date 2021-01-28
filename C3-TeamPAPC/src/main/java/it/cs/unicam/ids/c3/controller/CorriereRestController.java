@@ -4,8 +4,8 @@ import it.cs.unicam.ids.c3.entity.ChiamataEntity;
 import it.cs.unicam.ids.c3.entity.CorriereEntity;
 import it.cs.unicam.ids.c3.entity.OrdineEntity;
 import it.cs.unicam.ids.c3.entity.StatoOrdine;
-import it.cs.unicam.ids.c3.service.CorriereService;
-import it.cs.unicam.ids.c3.service.GestoreChiamate;
+import it.cs.unicam.ids.c3.service.CorriereServiceInterface;
+import it.cs.unicam.ids.c3.service.GestoreChiamateInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,9 +19,9 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class CorriereRestController {
     @Autowired
-    private CorriereService corriereService;
+    private CorriereServiceInterface corriereService;
     @Autowired
-    private GestoreChiamate gestoreChiamate;
+    private GestoreChiamateInterface gestoreChiamate;
 
     public CorriereRestController() {
     }
@@ -35,12 +35,7 @@ public class CorriereRestController {
     public CorriereEntity getCorriereById(@PathVariable long id){
         return this.corriereService.getCorriereById(id);
     }
-    @PostMapping
-    public CorriereEntity insertCorriere(@RequestBody CorriereEntity corriere){
-        corriere.initUsername();
-        this.corriereService.updateCorriere(corriere);
-        return corriere;
-    }
+
 
     @GetMapping("/chiamate")
     public List<ChiamataEntity> getListaChiamate(){

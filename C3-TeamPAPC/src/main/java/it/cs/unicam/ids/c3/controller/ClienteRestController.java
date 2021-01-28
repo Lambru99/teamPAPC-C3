@@ -1,7 +1,7 @@
 package it.cs.unicam.ids.c3.controller;
 
 import it.cs.unicam.ids.c3.entity.*;
-import it.cs.unicam.ids.c3.service.ClienteService;
+import it.cs.unicam.ids.c3.service.ClienteServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +16,7 @@ import java.util.Objects;
 @RequestMapping("/clienti")
 public class ClienteRestController{
     @Autowired
-    private ClienteService clienteService;
+    private ClienteServiceInterface clienteService;
 
     public ClienteRestController() {
     }

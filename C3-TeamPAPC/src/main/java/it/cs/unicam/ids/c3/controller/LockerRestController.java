@@ -2,7 +2,7 @@ package it.cs.unicam.ids.c3.controller;
 
 import it.cs.unicam.ids.c3.entity.LockerEntity;
 import it.cs.unicam.ids.c3.entity.OrdineEntity;
-import it.cs.unicam.ids.c3.service.GestoreLockers;
+import it.cs.unicam.ids.c3.service.GestoreLockersInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +16,7 @@ import java.util.List;
 @RequestMapping("/lockers")
 public class LockerRestController {
     @Autowired
-    private GestoreLockers gestoreLockers;
+    private GestoreLockersInterface gestoreLockers;
 
     public LockerRestController() {
     }

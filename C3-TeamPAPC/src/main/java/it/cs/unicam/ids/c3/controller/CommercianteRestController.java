@@ -1,7 +1,7 @@
 package it.cs.unicam.ids.c3.controller;
 
 import it.cs.unicam.ids.c3.entity.*;
-import it.cs.unicam.ids.c3.service.CommercianteService;
+import it.cs.unicam.ids.c3.service.CommercianteServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +14,7 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class CommercianteRestController {
     @Autowired
-    private CommercianteService commercianteService;
+    private CommercianteServiceInterface commercianteService;
 
     public CommercianteRestController() {
     }
@@ -38,6 +38,10 @@ public class CommercianteRestController {
         return getCommercinateById(id).getNegozio();
     }
 
+    @GetMapping("/{id}/ordini/getInfo")
+    public String getInfoOrdine(@PathVariable long id,@RequestParam long idOrdine){
+        return this.commercianteService.getInfoOrdine(id,idOrdine);
+    }
 
     @GetMapping("/{id}/prodotti")
     public List<ProdottoEntity> getProdottiNegozio(@PathVariable long id){

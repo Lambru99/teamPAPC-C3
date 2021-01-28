@@ -13,15 +13,16 @@ import java.util.List;
  * questo servizio verrà utilizzato da altri servizi
  */
 @Service
-public class GestoreLockers {
+public class GestoreLockers implements GestoreLockersInterface{
     @Autowired
     private LockerRepository lockerRepository;
     @Autowired
-    private GestoreOrdini gestoreOrdini;
+    private GestoreOrdiniInterface gestoreOrdini;
 
     public GestoreLockers() {
     }
 
+    @Override
     public List<LockerEntity> getLockers(){
         return this.lockerRepository.findAll();
     }
@@ -31,16 +32,19 @@ public class GestoreLockers {
      * @param id Id del locker da ricercare
      * @return locker che ha come id quello passato per input
      */
+    @Override
     public LockerEntity getLockerById(long id){
         return this.lockerRepository.findAll().stream().filter(n -> n.getId()==id).findFirst()
                 .orElseThrow(()->new NullPointerException("loker con questo id inesistente"));
     }
 
+    @Override
     public List<OrdineEntity> getOrdiniLocker(long id){
         return gestoreOrdini.filtraOrdini(this.gestoreOrdini.getOrdini(),o->
                 o.getDestinazione().getId()==id&&o.getStatoOrdine()== StatoOrdine.CONSEGNATO);
     }
 
+    @Override
     public void addOrUpdatesLocker(LockerEntity locker){
         this.lockerRepository.save(locker);
     }

@@ -2,7 +2,7 @@ package it.cs.unicam.ids.c3.controller;
 
 import it.cs.unicam.ids.c3.entity.CommercianteEntity;
 import it.cs.unicam.ids.c3.entity.NegozioEntity;
-import it.cs.unicam.ids.c3.service.RegistrationService;
+import it.cs.unicam.ids.c3.service.RegistrationServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class RegistrationRestController {
 
     @Autowired
-    RegistrationService registrationService;
+    RegistrationServiceInterface registrationService;
     public RegistrationRestController(){}
 
     /**

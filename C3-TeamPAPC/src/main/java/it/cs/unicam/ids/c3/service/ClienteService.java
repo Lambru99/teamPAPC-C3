@@ -8,25 +8,25 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 /**
  * servizio che permette di gestire le operazioni di un cliente
  */
 @Service
-public class ClienteService {
+public class ClienteService implements ClienteServiceInterface{
     @Autowired
     private ClienteRepository clienteRepository;
     @Autowired
-    private GestoreOrdini gestoreOrdini;
+    private GestoreOrdiniInterface gestoreOrdini;
 
     public ClienteService() {
     }
-
+    @Override
     public CreatoreOrdine getCreatoreOrdineInCorso(){
-        return this.gestoreOrdini.getCreatoreOrdine();
+        return this.gestoreOrdini.getCreatore();
     }
 
+    @Override
     public void cancellaOrdine(){
         this.gestoreOrdini.clearCreatore();
     }
@@ -36,6 +36,7 @@ public class ClienteService {
      * @param id del cliente
      * @param idOrdine dell'ordine da ritirare
      */
+    @Override
     public void cambiaStatoOrdine(long id,long idOrdine){
         if (getOrdiniCliente(id,o->o.getStatoOrdine()==StatoOrdine.CONSEGNATO||
                 o.getStatoOrdine()==StatoOrdine.RITIRO_NEGOZIO).stream().anyMatch(o->o.getId()==idOrdine))
@@ -50,6 +51,7 @@ public class ClienteService {
      * @param idOrdine dell'ordine da cui ottenere le informazioni
      * @return le informazioni dell'ordine
      */
+    @Override
     public String getInfoOrdine(long id,long idOrdine){
         if(getOrdiniCliente(id,o->true).stream().noneMatch(o->o.getId()==idOrdine))return null;
         else return this.gestoreOrdini.getInformazioni(idOrdine);
@@ -61,19 +63,22 @@ public class ClienteService {
      * @param predicate filtro da applicare alla lista
      * @return ordini esegiuti dal cliente
      */
+    @Override
     public List<OrdineEntity> getOrdiniCliente(long id, Predicate<OrdineEntity> predicate){
         return this.gestoreOrdini.filtraOrdini(getClienteById(id).getOrdini(),predicate);
     }
 
-
+    @Override
     public NegozioEntity setEmittenteOrdine(long idNegozio){
         return this.gestoreOrdini.setEmittenteOrdine(idNegozio);
     }
 
+    @Override
     public LockerEntity setDestinazioneOrdine(long idLocker){
         return this.gestoreOrdini.setDestinazione(idLocker);
     }
 
+    @Override
     public ProdottoEntity setProdottoOrdine(long idProdotto,int number){
         return this.gestoreOrdini.setProdottoOrdine(idProdotto,number);
     }
@@ -83,6 +88,7 @@ public class ClienteService {
      * @param id del cliente
      * @return l'ordine effettuato
      */
+    @Override
     public OrdineEntity addOrdineToCliente(long id) {
         if (this.clienteRepository.findAll().stream().noneMatch(clienteEntity -> clienteEntity.getId() == id))
             throw new NullPointerException("cliente con questo id inesistente");
@@ -99,10 +105,12 @@ public class ClienteService {
      * @param id id del cliente da ricercare
      * @return Il cliente con l'id dato in input
      */
+    @Override
     public ClienteEntity getClienteById(long id){
         if(this.clienteRepository.findAll().stream().noneMatch(clienteEntity -> clienteEntity.getId()==id))throw
                 new NullPointerException("nessun Cliente con questo Id");
         else
             return this.clienteRepository.getOne(id);
     }
+
 }

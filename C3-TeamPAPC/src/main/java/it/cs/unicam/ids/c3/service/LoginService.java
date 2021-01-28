@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * servizio che si occupa di verificare l'accesso per un utente già registrato nel sistema
  */
 @Service
-public class LoginService {
+public class LoginService implements LoginServiceInterface{
     @Autowired
     private ClienteRepository clienteRepository;
     @Autowired
@@ -58,6 +58,7 @@ public class LoginService {
      * @param password password dell'utente
      * @return id dell'utente verificato
      */
+    @Override
     public long getUserId(String userType,String email,String password){
         long id=0;
         MyUserType u = MyUserType.valueOf(userType.toUpperCase());

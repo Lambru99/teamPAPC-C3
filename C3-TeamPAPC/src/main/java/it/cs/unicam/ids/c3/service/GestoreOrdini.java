@@ -26,6 +26,7 @@ public class GestoreOrdini implements GestoreOrdiniInterface{
     private GestoreNegoziInterface gestoreNegozi;
     @Autowired
     private GestoreLockersInterface gestoreLockers;
+
     private CreatoreOrdine creatoreOrdine;
 
     public GestoreOrdini() {

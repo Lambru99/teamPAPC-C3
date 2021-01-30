@@ -5,3 +5,21 @@ Sviluppato da:
 - Ludovico Latini ludovico.latini@studenti.unicam.it
 - Yuri Monti yuri.monti@studenti.unicam.it
 - Gianmarco Verrucci gianmarco.verrucci@studenti.unicam.it
+
+# Specifiche progetto
+
+Il progetto è formato da un backend e da un frontend entrambi presenti in repository github [backend](https://github.com/Lambru99/teamPAPC-C3) [frontend](https://github.com/yurimonti/C3RestIonic).
+Il backend è stato sviluppato seguendo la progettazione precedentemente fatta tramite il software [Visual Paradigm](https://www.visual-paradigm.com/), attualmente implementa il framework [Springboot](https://spring.io/projects/spring-boot). Il backend si appoggia ad un database locale creato tramite [Xampp](https://www.apachefriends.org/it/index.html) chiamto "c3".
+Per il frontend è stato utilizzato il framework [Ionic](https://ionicframework.com/). Il frontend è stato scritto in HTML SCSS TypeScript e JavaScript. Esso si interfaccia con il backend tramite chiamte rest.
+
+# How To
+
+Per poter provare l'intero programma bisogna:
+
+- Scaricare Xampp ed avviarlo.
+- Recarsi [qui](http://localhost/phpmyadmin/).
+- Creare un database di nome "c3".
+- Avviare il beckend tramite "gradle bootrun".
+- Scaricare nodejs ed avviarlo.
+- Scaricare il framework ionic.
+- Avviare il frontend tramite il comando "ionic serve".

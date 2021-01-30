@@ -23,3 +23,5 @@ Per poter provare l'intero programma bisogna:
 - Scaricare nodejs ed avviarlo.
 - Scaricare il framework ionic.
 - Avviare il frontend tramite il comando "ionic serve".
+
+Una volta avviato il frontend ionic aprirà da solo la pagina principale del progetto e da quel momento si potrà inizia ad utilizzare C3. Nel database sono precaricati dei dati di prova.

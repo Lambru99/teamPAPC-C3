@@ -19,7 +19,7 @@ Per poter provare l'intero programma bisogna:
 - Scaricare Xampp ed avviarlo.
 - Recarsi [qui](http://localhost/phpmyadmin/).
 - Creare un database di nome "c3".
-- Avviare il beckend tramite "gradle bootrun".
+- Avviare il backend tramite "gradle bootrun".
 - Scaricare nodejs ed avviarlo.
 - Scaricare il framework ionic.
 - Avviare il frontend tramite il comando "ionic serve".

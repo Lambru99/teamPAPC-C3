@@ -1,7 +1,15 @@
 package it.cs.unicam.ids.c3;
 
-import it.cs.unicam.ids.c3.entity.*;
-import it.cs.unicam.ids.c3.repository.*;
+import it.cs.unicam.ids.c3.cliente.ClienteEntity;
+import it.cs.unicam.ids.c3.cliente.ClienteRepository;
+import it.cs.unicam.ids.c3.commerciante.CommercianteEntity;
+import it.cs.unicam.ids.c3.commerciante.CommercianteRepository;
+import it.cs.unicam.ids.c3.corriere.CorriereEntity;
+import it.cs.unicam.ids.c3.corriere.CorriereRepository;
+import it.cs.unicam.ids.c3.locker.LockerEntity;
+import it.cs.unicam.ids.c3.locker.LockerRepository;
+import it.cs.unicam.ids.c3.negozi.NegozioEntity;
+import it.cs.unicam.ids.c3.prodotti.ProdottoEntity;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

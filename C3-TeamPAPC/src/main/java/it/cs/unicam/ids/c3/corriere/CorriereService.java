@@ -4,7 +4,7 @@ import it.cs.unicam.ids.c3.chiamate.GestoreChiamateInterface;
 import it.cs.unicam.ids.c3.ordine.GestoreOrdiniInterface;
 import it.cs.unicam.ids.c3.ordine.OrdineEntity;
 import it.cs.unicam.ids.c3.ordine.StatoOrdine;
-import it.cs.unicam.ids.c3.cliente.ChiamataEntity;
+import it.cs.unicam.ids.c3.chiamate.ChiamataEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;

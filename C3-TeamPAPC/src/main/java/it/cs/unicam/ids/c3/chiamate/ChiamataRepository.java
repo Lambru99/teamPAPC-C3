@@ -1,4 +1,4 @@
-package it.cs.unicam.ids.c3.cliente;
+package it.cs.unicam.ids.c3.chiamate;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
